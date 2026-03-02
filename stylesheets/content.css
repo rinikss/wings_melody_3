@@ -1,0 +1,294 @@
+body {
+  width: 100%;
+  overflow-x: hidden !important;
+  background-color: #12101c;
+  transition: background-color 0.4s ease;
+  position: relative;
+}
+.block1 {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+.text {
+  position: relative;
+  width: 94vw;
+  height: 1.6vw;
+  top: 2.8vw;
+  left: 2.8vw;
+  right: 2.8vw;
+}
+.top_text {
+  font-family: "Inter";
+  font-size: 20px;
+  font-style: medium;
+  color: white;
+  font-weight: 500;
+}
+.top_texts {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.top_text:first-child {
+  margin-right: 28vw;
+}
+
+.top_text:nth-child(2) {
+  margin-right: 19vw;
+}
+
+.top_text:last-child {
+  margin-left: auto;
+}
+
+/* /////////////////////////////////////////// */
+.bird_container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bird_image {
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  pointer-events: none;
+}
+
+.bird_image[data-bird="1"] {
+  width: 21vw;
+  height: 39vw;
+  left: 49%;
+  top: 25vw;
+  transform: translate(-50%, -50%);
+}
+
+.bird_image[data-bird="2"] {
+  width: 15.6vw;
+  height: 40vw;
+  left: 40.6vw;
+  top: 26vw;
+  transform: translateY(-50%);
+}
+
+.bird_image[data-bird="3"] {
+  width: 18.8vw;
+  height: 35vw;
+  left: 39vw;
+  top: 26vw;
+  transform: translateY(-50%);
+}
+
+/*/////////////////////////////////////// */
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.icon_btn {
+  width: 6vw;
+  height: 6vw;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.btn_icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  background: transparent;
+}
+
+.icon_btn:hover {
+  transform: scale(1.1);
+}
+
+.icon_btn:hover .btn_icon {
+  transform: scale(1.05);
+}
+
+.icon_btn:active {
+  transform: scale(0.85);
+}
+
+#leftArrow {
+  position: absolute;
+  left: 30vw;
+  top: 26.8vw;
+}
+#rightArrow {
+  position: absolute;
+  right: 30vw;
+  top: 26.8vw;
+}
+
+.confirm_btn {
+  width: 22vw;
+  height: 4vw;
+  background: white;
+  color: black;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 51vw;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.confirm_btn:hover {
+  background: #f0f0f0;
+}
+
+.confirm_btn:active {
+  transform: translateX(-50%) scale(0.98);
+}
+/* .vinyl_left,
+.vinyl_right {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vinyl_left {
+  left: -35vw;
+  bottom: 25vw;
+}
+.vinyl_right {
+  right: -5vw;
+  bottom: 25vw;
+} */
+
+.bird_image,
+.icon_btn,
+.confirm_btn {
+  z-index: 10;
+}
+/* ВТОРОЙ ЭКРАН */
+.block2 {
+  width: 100%;
+  height: 67vw;
+  background: transparent;
+  position: relative;
+}
+
+.for_tetris {
+  position: absolute;
+  left: 27vw;
+}
+
+.note_1 {
+  position: absolute;
+  left: 8.4vw;
+}
+
+.note_2 {
+  position: absolute;
+  left: 8.4vw;
+  top: 16vw;
+}
+
+.headphones {
+  position: absolute;
+  left: 7.4vw;
+  top: 30vw;
+}
+
+.guitar {
+  position: absolute;
+  left: 30vw;
+  top: 45vw;
+}
+
+.sticks {
+  position: absolute;
+  left: 75vw;
+  top: 30vw;
+}
+
+.microphone {
+  position: absolute;
+  left: 84.7vw;
+  top: 10vw;
+}
+
+.vinyl {
+  position: absolute;
+  left: 84vw;
+}
+
+.note_1,
+.note_2,
+.headphones,
+.guitar,
+.sticks,
+.microphone,
+.vinyl {
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.2s ease;
+  z-index: 10;
+  user-select: none;
+  -webkit-user-drag: none;
+  margin: 0;
+}
+
+.note_1:hover,
+.note_2:hover,
+.headphones:hover,
+.guitar:hover,
+.sticks:hover,
+.microphone:hover,
+.vinyl:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.note_1:active,
+.note_2:active,
+.headphones:active,
+.guitar:active,
+.sticks:active,
+.microphone:active,
+.vinyl:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+.note_1.placed,
+.note_2.placed,
+.headphones.placed,
+.guitar.placed,
+.sticks.placed,
+.microphone.placed,
+.vinyl.placed {
+  opacity: 0.8;
+
+  pointer-events: none;
+  cursor: default;
+}
