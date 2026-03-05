@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // ========== ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА ==========
+  // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const html = document.documentElement;
 
-  // ========== ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА ==========
+  // ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА
   const box = document.getElementById("tetrisBox");
   const note1 = document.getElementById("note1");
   const note2 = document.getElementById("note2");
@@ -62,22 +62,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const sticks = document.getElementById("sticks");
   const microphone = document.getElementById("microphone");
   const vinyl = document.getElementById("vinyl");
-  // ========== ПЕРЕМЕННЫЕ ==========
+  // ПЕРЕМЕННЫЕ
   let currentBird = 0;
   let isConfirmed = false;
 
-  // ========== ФУНКЦИИ ==========
+  // ФУНКЦИИ
 
   // блокировка/разблокировка скролла
-  function toggleScroll(lock) {
-    if (lock) {
-      body.style.overflow = "hidden";
-      html.style.overflow = "hidden";
-    } else {
-      body.style.overflow = "";
-      html.style.overflow = "";
-    }
-  }
+  //   function toggleScroll(lock) {
+  //     if (lock) {
+  //       body.style.overflow = "hidden";
+  //       html.style.overflow = "hidden";
+  //     } else {
+  //       body.style.overflow = "";
+  //       html.style.overflow = "";
+  //     }
+  //   }
 
   // смена всех элементов при переключении птички
   function changeAllElements(index) {
@@ -158,12 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // блок скролла
-  toggleScroll(true);
+  //   toggleScroll(true);
 
   changeAllElements(0);
   birdImage.style.opacity = "1";
 
-  console.log("скрипт загружен, скролл заблокирован");
+  //   console.log("скрипт загружен, скролл заблокирован");
 
   // драг энд дропчик фак гад демчик//
 
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
       placedItems.push(activeElement);
 
       if (placedItems.length === draggableElements.length) {
-        setTimeout(() => alert("поздравляем! Все элементы собраны!"), 100);
+        setTimeout(() => alert("поздравляем, все элементы собраны!"), 100);
       }
     } else {
       console.log("брошен мимо поля");
