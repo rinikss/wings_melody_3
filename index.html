@@ -44,6 +44,24 @@
     </section>
 
     <section class="block2" id="block2">
+      <!-- Окошко с правилами (появится после выбора птицы) -->
+      <div class="rules_popup" id="rulesPopup">
+        <div class="rules_content">
+          <img
+            src="./images/bird1mini.svg"
+            alt="птичка"
+            class="rules_bird"
+            id="rulesBird"
+          />
+          <p class="rules_text" id="rulesText">
+            Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные
+            инструменты. Перетащи их внутрь так, чтобы заполнить все пустые
+            клетки. Ни одной свободной, ни одного наложения. Как идеальный
+            чемодан в тур. Справишься?
+          </p>
+          <button class="rules_close" id="closeRules">Понятно</button>
+        </div>
+      </div>
       <div class="game_container">
         <img
           src="./images/box.svg"
@@ -80,6 +98,37 @@
         />
 
         <img src="./images/vinyl.svg" alt="винил" class="vinyl" id="vinyl" />
+      </div>
+      <!-- анимация награды -->
+      <div class="reward_vinyl" id="rewardVinyl">
+        <img
+          src="./images/vinyl_reward.svg"
+          alt="виниловая пластинка награда"
+        />
+      </div>
+    </section>
+    <!-- ЭКРАН 3 -->
+    <section class="block3">
+      <div class="elips_1">
+        <div class="elips_2">
+          <div class="elips_3"></div>
+        </div>
+      </div>
+
+      <div class="circle-group group-2">
+        <div class="elips_1 small">
+          <div class="elips_2 small">
+            <div class="elips_3 small"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="circle-group group-3">
+        <div class="elips_1 smaller">
+          <div class="elips_2 smaller">
+            <div class="elips_3 smaller"></div>
+          </div>
+        </div>
       </div>
     </section>
   </body>

@@ -192,16 +192,103 @@ button {
 /* ВТОРОЙ ЭКРАН */
 .block2 {
   width: 100%;
-  height: 67vw;
+  height: 58vw;
   background: transparent;
   position: relative;
 }
+/* Окошко с правилами */
+.rules_popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
 
+.rules_popup.show {
+  display: flex;
+}
+
+.rules_content {
+  width: 42vw;
+  height: 14.7vw;
+  background: #ffdb70;
+  border-radius: 2vw;
+  padding: 1.5vw 2vw;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: popupAppear 0.3s ease;
+}
+
+@keyframes popupAppear {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.rules_bird {
+  width: 15vw;
+  height: 15vw;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.rules_text {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  flex: 1;
+  font-weight: 500;
+}
+
+.rules_close {
+  position: absolute;
+  bottom: -4vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 3vw;
+  padding: 0.8vw 2vw;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.rules_close:hover {
+  background: #f0f0f0;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.rules_close:active {
+  transform: translateX(-50%) scale(0.95);
+}
 .for_tetris {
   position: absolute;
   left: 29vw;
-  width: 42vw;
-  height: 42vw;
+  width: 40vw;
+  height: 40vw;
 }
 
 .note_1 {
@@ -229,9 +316,9 @@ button {
 
 .guitar {
   position: absolute;
-  left: 30vw;
-  top: 43vw;
-  width: 36vw;
+  left: 32vw;
+  top: 42vw;
+  width: 33vw;
   height: 12vw;
 }
 
@@ -245,7 +332,7 @@ button {
 
 .microphone {
   position: absolute;
-  left: 84.7vw;
+  left: 81vw;
   top: 10vw;
   width: 6vw;
   height: 20vw;
@@ -253,7 +340,7 @@ button {
 
 .vinyl {
   position: absolute;
-  left: 84vw;
+  left: 81vw;
   width: 7vw;
   height: 7vw;
 }
@@ -306,4 +393,218 @@ button {
   opacity: 0.8;
   pointer-events: none;
   cursor: default;
+}
+/* Награда - виниловая пластинка */
+.reward_vinyl {
+  position: fixed;
+  top: -20vw;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  width: 30vw;
+  height: 30vw;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0; /* ПО УМОЛЧАНИЮ СКРЫТА */
+  transition: opacity 0.3s ease;
+}
+
+.reward_vinyl.show {
+  opacity: 1;
+  animation: vinylDrop 1.5s ease forwards;
+}
+
+.reward_vinyl img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes vinylDrop {
+  0% {
+    top: -20vw;
+    transform: translateX(-50%) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    top: 30%;
+    transform: translateX(-50%) rotate(180deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    top: 35%;
+    transform: translateX(-50%) rotate(270deg) scale(1);
+    opacity: 1;
+  }
+  70% {
+    top: 33%;
+    transform: translateX(-50%) rotate(360deg) scale(0.95);
+    opacity: 1;
+  }
+  85% {
+    top: 35%;
+    transform: translateX(-50%) rotate(405deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    top: 35%;
+    transform: translateX(-50%) rotate(450deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Кнопка для сбора награды */
+.collect_reward {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffdb70;
+  color: black;
+  border: none;
+  border-radius: 50px;
+  padding: 1vw 2.5vw;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 2001;
+  opacity: 0; /* ПО УМОЛЧАНИЮ СКРЫТА */
+  pointer-events: none; /* НЕЛЬЗЯ НАЖАТЬ, ПОКА НЕ ВИДНА */
+  transition: opacity 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.collect_reward.show {
+  opacity: 1;
+  pointer-events: auto; /* МОЖНО НАЖАТЬ, КОГДА ВИДНА */
+}
+
+.collect_reward:hover {
+  transform: translateX(-50%) scale(1.05);
+  background: #f0d070;
+}
+
+.collect_reward:active {
+  transform: translateX(-50%) scale(0.95);
+}
+.block3 {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.elips_1 {
+  width: 33vw;
+  height: 33vw;
+  border-radius: 100%;
+  background-color: #7083ff;
+  margin-left: 83vw;
+  animation: pulseBig 3s ease-in-out infinite;
+}
+
+.elips_2 {
+  position: absolute;
+  width: 22.8vw;
+  height: 22.8vw;
+  border-radius: 100%;
+  background-color: #b2a3ff;
+  margin-left: 5.3vw;
+  margin-top: 5.3vw;
+  animation: pulseMedium 3s ease-in-out infinite;
+}
+
+.elips_3 {
+  position: absolute;
+  width: 13vw;
+  height: 13vw;
+  border-radius: 100%;
+  background-color: #390071;
+  margin-left: 5.3vw;
+  margin-top: 5.3vw;
+  animation: pulseSmall 3s ease-in-out infinite;
+}
+.circle-group {
+  position: absolute;
+}
+
+.group-2 {
+  margin-top: -35vw;
+  margin-left: -8vw;
+}
+.group-3 {
+  margin-top: -30vw;
+  margin-left: -15vw;
+}
+.elips_1.small {
+  width: 15vw;
+  height: 15vw;
+}
+
+.elips_2.small {
+  width: 10vw;
+  height: 10vw;
+  margin-left: 2.6vw;
+  margin-top: 2.6vw;
+}
+
+.elips_3.small {
+  width: 6vw;
+  height: 6vw;
+  margin-left: 2vw;
+  margin-top: 2vw;
+}
+.elips_1.smaller {
+  width: 8.6vw;
+  height: 8.6vw;
+}
+
+.elips_2.smaller {
+  width: 6vw;
+  height: 6vw;
+  margin-left: 1.3vw;
+  margin-top: 1.3vw;
+}
+
+.elips_3.smaller {
+  width: 3vw;
+  height: 3vw;
+  margin-left: 1.5vw;
+  margin-top: 1.5vw;
+}
+@keyframes pulseBig {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(0.9);
+  }
+  66% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseMedium {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.1);
+  }
+  66% {
+    transform: scale(0.95);
+  }
+}
+@keyframes pulseSmall {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  66% {
+    transform: scale(0.9);
+  }
 }

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // начало конца//
+  // ========== ДАННЫЕ ==========
   const birds = [
     {
       image: "./images/bird1.svg",
@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
       guitar: "./images/guitar.svg",
       sticks: "./images/sticks.svg",
       microphone: "./images/microphone.svg",
-      disk: "./images/disk.svg",
       vinyl: "./images/vinyl.svg",
+      elips1_color: "#7083ff",
+      elips2_color: "#b2a3ff",
+      elips3_color: "#390071",
     },
     {
       image: "./images/bird2.svg",
@@ -26,8 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
       guitar: "./images/guitar_2.svg",
       sticks: "./images/sticks_2.svg",
       microphone: "./images/microphone_2.svg",
-      disk: "./images/disk_2.svg",
       vinyl: "./images/vinyl_2.svg",
+      elips1_color: "#EE9300",
+      elips2_color: "#FFDB70",
+      elips3_color: "#FFF0B4",
     },
     {
       image: "./images/bird3.svg",
@@ -40,12 +44,27 @@ document.addEventListener("DOMContentLoaded", function () {
       guitar: "./images/guitar_3.svg",
       sticks: "./images/sticks_3.svg",
       microphone: "./images/microphone_3.svg",
-      disk: "./images/disk_3.svg",
       vinyl: "./images/vinyl_3.svg",
+      elips1_color: "#F04B35",
+      elips2_color: "#F0A835",
+      elips3_color: "#F0C135",
     },
   ];
 
-  // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
+  // ========== ТЕКСТЫ И КАРТИНКИ ДЛЯ ОКОШЕК ==========
+  const rulesTexts = [
+    "Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные инструменты. Перетащи их внутрь так, чтобы заполнить все пустые клетки. Ни одной свободной, ни одного наложения. Как идеальный чемодан в тур. Справишься?",
+    "Друг мой, посмотри: ноты и инструменты ждут своего места. Перетащи их в пустые клетки так, чтобы заполнить всё поле. Ни одной свободной клеточки, как в идеальной мелодии ни одной лишней ноты. У тебя получится!",
+    "Смотри сюда. Поле пустое, вокруг — элементы. Твоя задача: заполнить всё без пробелов. Никакой магии, просто логика и чувство формы. Музыка любит порядок, даже когда кажется, что она хаотична. Давай, у тебя есть вкус, я знаю.",
+  ];
+
+  const birdMiniImages = [
+    "./images/bird1mini.svg",
+    "./images/bird2mini.svg",
+    "./images/bird3mini.svg",
+  ];
+
+  // ========== ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА ==========
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -53,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const html = document.documentElement;
 
-  // ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА
+  // ========== ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА ==========
   const box = document.getElementById("tetrisBox");
   const note1 = document.getElementById("note1");
   const note2 = document.getElementById("note2");
@@ -62,24 +81,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const sticks = document.getElementById("sticks");
   const microphone = document.getElementById("microphone");
   const vinyl = document.getElementById("vinyl");
-  // ПЕРЕМЕННЫЕ
+
+  // ========== ЭЛЕМЕНТЫ ОКОШКА ==========
+  const rulesPopup = document.getElementById("rulesPopup");
+  const rulesBird = document.getElementById("rulesBird");
+  const rulesText = document.getElementById("rulesText");
+  const closeRules = document.getElementById("closeRules");
+
+  // ========== ПЕРЕМЕННЫЕ ==========
   let currentBird = 0;
   let isConfirmed = false;
 
-  // ФУНКЦИИ
+  // ========== ФУНКЦИИ ==========
+  function toggleScroll(lock) {
+    if (lock) {
+      body.style.overflow = "hidden";
+      html.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+      html.style.overflow = "";
+    }
+  }
 
-  // блокировка/разблокировка скролла
-  //   function toggleScroll(lock) {
-  //     if (lock) {
-  //       body.style.overflow = "hidden";
-  //       html.style.overflow = "hidden";
-  //     } else {
-  //       body.style.overflow = "";
-  //       html.style.overflow = "";
-  //     }
-  //   }
-
-  // смена всех элементов при переключении птички
   function changeAllElements(index) {
     const bird = birds[index];
 
@@ -90,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body.style.backgroundColor = bird.color;
     }
 
+    // меняем все элементы второго экрана
     if (box) box.src = bird.box;
     if (note1) note1.src = bird.note_1;
     if (note2) note2.src = bird.note_2;
@@ -97,13 +121,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (guitar) guitar.src = bird.guitar;
     if (sticks) sticks.src = bird.sticks;
     if (microphone) microphone.src = bird.microphone;
-
     if (vinyl) vinyl.src = bird.vinyl;
+
+    // меняем текст и картинку в окошке
+    if (rulesText) rulesText.textContent = rulesTexts[index];
+    if (rulesBird) rulesBird.src = birdMiniImages[index];
+
+    // ===== МЕНЯЕМ ЦВЕТА НА 3 ЭКРАНЕ =====
+    const allElips = document.querySelectorAll(".elips_1, .elips_2, .elips_3");
+    allElips.forEach((el) => {
+      if (el.classList.contains("elips_1")) {
+        el.style.backgroundColor = bird.elips1_color;
+      } else if (el.classList.contains("elips_2")) {
+        el.style.backgroundColor = bird.elips2_color;
+      } else if (el.classList.contains("elips_3")) {
+        el.style.backgroundColor = bird.elips3_color;
+      }
+    });
 
     console.log(`Смена на птицу ${index + 1}, цвет фона: ${bird.color}`);
   }
 
-  // смена птицы с анимацией
   function changeBird(index) {
     birdImage.style.transition = "opacity 0.2s ease";
     birdImage.style.opacity = "0";
@@ -114,59 +152,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 150);
   }
 
-  //  ОБРАБОТЧИКИ
+  // ========== DRAG & DROP ==========
 
-  // левая стрелка
-  leftArrow.onclick = function (e) {
-    e.preventDefault();
-    if (!isConfirmed) {
-      currentBird = (currentBird - 1 + birds.length) % birds.length;
-      changeBird(currentBird);
+  // ========== НАГРАДА ЗА ПРОХОЖДЕНИЕ ==========
+  const rewardVinyl = document.getElementById("rewardVinyl");
+  const collectRewardBtn = document.createElement("button");
+
+  // Создаем кнопку сбора награды
+  collectRewardBtn.className = "collect_reward";
+  collectRewardBtn.id = "collectReward";
+  collectRewardBtn.textContent = "забрать пластинку";
+  document.body.appendChild(collectRewardBtn);
+
+  // Функция показа награды
+  function showReward() {
+    if (rewardVinyl) {
+      rewardVinyl.classList.add("show");
+
+      // Показываем кнопку после анимации
+      setTimeout(() => {
+        collectRewardBtn.classList.add("show");
+      }, 1500);
     }
-  };
+  }
 
-  // правая стрелка
-  rightArrow.onclick = function (e) {
-    e.preventDefault();
-    if (!isConfirmed) {
-      currentBird = (currentBird + 1) % birds.length;
-      changeBird(currentBird);
+  // Функция сброса награды
+  function resetReward() {
+    if (rewardVinyl) {
+      rewardVinyl.classList.remove("show");
     }
-  };
+    collectRewardBtn.classList.remove("show");
+  }
 
-  // кнопка подтверждения
-  confirmBtn.onclick = function (e) {
-    e.preventDefault();
+  // Обработчик для кнопки сбора награды
+  collectRewardBtn.addEventListener("click", function () {
+    rewardVinyl.classList.remove("show");
+    collectRewardBtn.classList.remove("show");
+    // Просто скрываем награду, без сообщения
+  });
 
-    if (!isConfirmed) {
-      isConfirmed = true;
-
-      //внешний вид кнопки
-      confirmBtn.style.background = "#4CAF50";
-      confirmBtn.style.color = "white";
-      confirmBtn.textContent = "выбрано ✓";
-
-      toggleScroll(false);
-
-      const rulesPopup = document.getElementById("rulesPopup");
-      if (rulesPopup) {
-        rulesPopup.classList.add("show");
-      }
-
-      console.log("выбор подтвержден, скролл разблокирован");
-    }
-  };
-
-  // блок скролла
-  //   toggleScroll(true);
-
-  changeAllElements(0);
-  birdImage.style.opacity = "1";
-
-  //   console.log("скрипт загружен, скролл заблокирован");
-
-  // драг энд дропчик фак гад демчик//
-
+  // ========== DRAG & DROP ==========
   const draggableElements = document.querySelectorAll(
     ".note_1, .note_2, .headphones, .guitar, .sticks, .microphone, .vinyl",
   );
@@ -241,10 +266,12 @@ document.addEventListener("DOMContentLoaded", function () {
       placedItems.push(activeElement);
 
       if (placedItems.length === draggableElements.length) {
-        setTimeout(() => alert("поздравляем, все элементы собраны!"), 100);
+        setTimeout(() => {
+          showReward(); // просто показываем награду без алерта
+        }, 100);
       }
     } else {
-      console.log("брошен мимо поля");
+      console.log("Брошен мимо поля");
     }
 
     activeElement.style.zIndex = "10";
@@ -255,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
     activeElement = null;
   }
 
-  // сброс
+  // функция сброса Drag & Drop
   function resetDragAndDrop() {
     placedItems = [];
     draggableElements.forEach((el) => {
@@ -263,5 +290,63 @@ document.addEventListener("DOMContentLoaded", function () {
       el.style.pointerEvents = "auto";
       el.style.opacity = "1";
     });
+    resetReward(); // сбрасываем награду
   }
+
+  // ========== ОБРАБОТЧИКИ ==========
+  leftArrow.onclick = function (e) {
+    e.preventDefault();
+    if (!isConfirmed) {
+      currentBird = (currentBird - 1 + birds.length) % birds.length;
+      changeBird(currentBird);
+    }
+  };
+
+  rightArrow.onclick = function (e) {
+    e.preventDefault();
+    if (!isConfirmed) {
+      currentBird = (currentBird + 1) % birds.length;
+      changeBird(currentBird);
+    }
+  };
+
+  confirmBtn.onclick = function (e) {
+    e.preventDefault();
+
+    if (!isConfirmed) {
+      isConfirmed = true;
+
+      confirmBtn.style.background = "#4CAF50";
+      confirmBtn.style.color = "white";
+      confirmBtn.textContent = "выбрано ✓";
+
+      toggleScroll(false);
+
+      if (rulesPopup) {
+        rulesPopup.classList.add("show");
+      }
+
+      console.log("Выбор подтвержден, скролл разблокирован");
+    }
+  };
+
+  if (closeRules) {
+    closeRules.addEventListener("click", function () {
+      rulesPopup.classList.remove("show");
+    });
+  }
+
+  if (rulesPopup) {
+    rulesPopup.addEventListener("click", function (e) {
+      if (e.target === rulesPopup) {
+        rulesPopup.classList.remove("show");
+      }
+    });
+  }
+
+  // ========== ИНИЦИАЛИЗАЦИЯ ==========
+  // toggleScroll(true);
+  changeAllElements(0);
+  birdImage.style.opacity = "1";
+  // console.log("Скрипт загружен, скролл заблокирован");
 });
