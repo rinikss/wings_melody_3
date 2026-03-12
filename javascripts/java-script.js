@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ========== ДАННЫЕ ==========
+  // ДАННЫЕ
   const birds = [
     {
       image: "./images/bird1.svg",
@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
       elips1_color: "#7083ff",
       elips2_color: "#b2a3ff",
       elips3_color: "#390071",
+      soundpad: "./images/console_1.svg",
+      laptop: "./images/laptop_1.svg",
+      wires: "./images/wires.svg",
     },
     {
       image: "./images/bird2.svg",
@@ -32,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
       elips1_color: "#EE9300",
       elips2_color: "#FFDB70",
       elips3_color: "#FFF0B4",
+      soundpad: "./images/console_2.svg",
+      laptop: "./images/laptop_2.svg",
+      wires: "./images/wires_2.svg",
     },
     {
       image: "./images/bird3.svg",
@@ -48,10 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
       elips1_color: "#F04B35",
       elips2_color: "#F0A835",
       elips3_color: "#F0C135",
+      soundpad: "./images/console_3.svg",
+      laptop: "./images/laptop_3.svg",
+      wires: "./images/wires_3.svg",
     },
   ];
 
-  // ========== ТЕКСТЫ И КАРТИНКИ ДЛЯ ОКОШЕК ==========
+  // ТЕКСТЫ И КАРТИНКИ ДЛЯ ОКОШЕК
   const rulesTexts = [
     "Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные инструменты. Перетащи их внутрь так, чтобы заполнить все пустые клетки. Ни одной свободной, ни одного наложения. Как идеальный чемодан в тур. Справишься?",
     "Друг мой, посмотри: ноты и инструменты ждут своего места. Перетащи их в пустые клетки так, чтобы заполнить всё поле. Ни одной свободной клеточки, как в идеальной мелодии ни одной лишней ноты. У тебя получится!",
@@ -64,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "./images/bird3mini.svg",
   ];
 
-  // ========== ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА ==========
+  // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -72,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const html = document.documentElement;
 
-  // ========== ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА ==========
+  // ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА
   const box = document.getElementById("tetrisBox");
   const note1 = document.getElementById("note1");
   const note2 = document.getElementById("note2");
@@ -82,17 +91,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const microphone = document.getElementById("microphone");
   const vinyl = document.getElementById("vinyl");
 
-  // ========== ЭЛЕМЕНТЫ ОКОШКА ==========
+  // ЭЛЕМЕНТЫ ОКОШКА
   const rulesPopup = document.getElementById("rulesPopup");
   const rulesBird = document.getElementById("rulesBird");
   const rulesText = document.getElementById("rulesText");
   const closeRules = document.getElementById("closeRules");
 
-  // ========== ПЕРЕМЕННЫЕ ==========
+  // ЭЛЕМЕНТЫ ТРЕТЬЕГО ЭКРАНА
+  const soundpad = document.getElementById("SoundPad");
+  const laptop = document.getElementById("LapTop");
+  const wires = document.getElementById("wires");
+
+  // ПЕРЕМЕННЫЕ
   let currentBird = 0;
   let isConfirmed = false;
 
-  // ========== ФУНКЦИИ ==========
+  // ФУНКЦИИ
   function toggleScroll(lock) {
     if (lock) {
       body.style.overflow = "hidden";
@@ -113,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body.style.backgroundColor = bird.color;
     }
 
-    // меняем все элементы второго экрана
+    // все элементы второго экрана
     if (box) box.src = bird.box;
     if (note1) note1.src = bird.note_1;
     if (note2) note2.src = bird.note_2;
@@ -123,11 +137,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (microphone) microphone.src = bird.microphone;
     if (vinyl) vinyl.src = bird.vinyl;
 
-    // меняем текст и картинку в окошке
+    //  все элементы 3 экрана
+    if (soundpad) soundpad.src = bird.soundpad;
+    if (laptop) laptop.src = bird.laptop;
+    if (wires) wires.src = bird.wires;
+
+    // текст и картинка в окошке
     if (rulesText) rulesText.textContent = rulesTexts[index];
     if (rulesBird) rulesBird.src = birdMiniImages[index];
 
-    // ===== МЕНЯЕМ ЦВЕТА НА 3 ЭКРАНЕ =====
+    // ЦВЕТА НА 3 ЭКРАНЕ
     const allElips = document.querySelectorAll(".elips_1, .elips_2, .elips_3");
     allElips.forEach((el) => {
       if (el.classList.contains("elips_1")) {
@@ -152,9 +171,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 150);
   }
 
-  // ========== DRAG & DROP ==========
+  // DRAG & DROP
 
-  // ========== НАГРАДА ЗА ПРОХОЖДЕНИЕ ==========
+  // награда
   const rewardVinyl = document.getElementById("rewardVinyl");
   const collectRewardBtn = document.createElement("button");
 
@@ -191,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Просто скрываем награду, без сообщения
   });
 
-  // ========== DRAG & DROP ==========
+  // DRAG & DROP
   const draggableElements = document.querySelectorAll(
     ".note_1, .note_2, .headphones, .guitar, .sticks, .microphone, .vinyl",
   );
@@ -267,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (placedItems.length === draggableElements.length) {
         setTimeout(() => {
-          showReward(); // просто показываем награду без алерта
+          showReward();
         }, 100);
       }
     } else {
@@ -293,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetReward(); // сбрасываем награду
   }
 
-  // ========== ОБРАБОТЧИКИ ==========
+  // ОБРАБОТЧИКИ
   leftArrow.onclick = function (e) {
     e.preventDefault();
     if (!isConfirmed) {
@@ -310,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // В обработчике кнопки подтверждения УБИРАЕМ показ окошка
   confirmBtn.onclick = function (e) {
     e.preventDefault();
 
@@ -322,29 +342,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
       toggleScroll(false);
 
-      if (rulesPopup) {
-        rulesPopup.classList.add("show");
-      }
+      // Окошко НЕ показываем здесь!
 
       console.log("Выбор подтвержден, скролл разблокирован");
     }
   };
 
+  // Отслеживаем скролл до второго экрана
+  window.addEventListener("scroll", function () {
+    const block2 = document.getElementById("block2");
+    const block2Position = block2.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    // Когда второй экран появляется в окне
+    if (block2Position < windowHeight - 100 && block2Position > -100) {
+      if (
+        rulesPopup &&
+        !rulesPopup.classList.contains("show") &&
+        !window.hasShownRules
+      ) {
+        rulesPopup.classList.add("show");
+        window.hasShownRules = true; // чтобы не показывалось каждый раз при скролле
+        console.log("Окошко с правилами показано");
+      }
+    }
+  });
+
+  // Закрытие по кнопке
   if (closeRules) {
     closeRules.addEventListener("click", function () {
       rulesPopup.classList.remove("show");
     });
   }
 
-  if (rulesPopup) {
-    rulesPopup.addEventListener("click", function (e) {
-      if (e.target === rulesPopup) {
-        rulesPopup.classList.remove("show");
-      }
-    });
-  }
-
-  // ========== ИНИЦИАЛИЗАЦИЯ ==========
+  // Закрытие по клику вне окошка (без затемнения)
+  document.addEventListener("click", function (e) {
+    if (
+      rulesPopup.classList.contains("show") &&
+      !rulesPopup.contains(e.target) &&
+      e.target !== closeRules
+    ) {
+      rulesPopup.classList.remove("show");
+    }
+  });
+  // ИНИЦИАЛИЗАЦИЯ
   // toggleScroll(true);
   changeAllElements(0);
   birdImage.style.opacity = "1";

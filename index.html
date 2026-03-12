@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Wings melody</title>
     <link href="./stylesheets/style.css" rel="stylesheet" type="text/css" />
     <script src="javascripts/java-script.js" charset="utf-8"></script>
   </head>
@@ -34,17 +34,9 @@
       </button>
 
       <button class="confirm_btn" id="confirmBtn">подтвердить выбор</button>
-
-      <!-- <div class="vinyl_left">
-        <img src="./images/disk.svg" alt="винил левый" />
-      </div>
-      <div class="vinyl_right">
-        <img src="./images/disk.svg" alt="винил правый" />
-      </div> -->
     </section>
-
+    <!-- ЭКРАН 2 -->
     <section class="block2" id="block2">
-      <!-- Окошко с правилами (появится после выбора птицы) -->
       <div class="rules_popup" id="rulesPopup">
         <div class="rules_content">
           <img
@@ -53,12 +45,15 @@
             class="rules_bird"
             id="rulesBird"
           />
-          <p class="rules_text" id="rulesText">
-            Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные
-            инструменты. Перетащи их внутрь так, чтобы заполнить все пустые
-            клетки. Ни одной свободной, ни одного наложения. Как идеальный
-            чемодан в тур. Справишься?
-          </p>
+          <div class="rules_container">
+            <p class="rules_text" id="rulesText">
+              Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные
+              инструменты. Перетащи их внутрь так, чтобы заполнить все пустые
+              клетки. Ни одной свободной, ни одного наложения. Как идеальный
+              чемодан в тур. Справишься?
+            </p>
+          </div>
+
           <button class="rules_close" id="closeRules">Понятно</button>
         </div>
       </div>
@@ -124,6 +119,37 @@
       </div>
 
       <div class="circle-group group-3">
+        <div class="elips_1 smaller">
+          <div class="elips_2 smaller">
+            <div class="elips_3 smaller"></div>
+          </div>
+        </div>
+      </div>
+      <img class="wires" src="./images/wires.svg" alt="провода" id="wires" />
+      <div class="soundpad">
+        <img class="sp_img" src="./images/console_1.svg" alt="" id="SoundPad" />
+      </div>
+      <div class="laptop">
+        <img class="lp_img" src="./images/laptop_1.svg" alt="" id="LapTop" />
+      </div>
+
+      <div class="circle-group reflected reflected-1">
+        <div class="elips_1">
+          <div class="elips_2">
+            <div class="elips_3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="circle-group reflected reflected-2">
+        <div class="elips_1 small">
+          <div class="elips_2 small">
+            <div class="elips_3 small"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="circle-group reflected reflected-3">
         <div class="elips_1 smaller">
           <div class="elips_2 smaller">
             <div class="elips_3 smaller"></div>
