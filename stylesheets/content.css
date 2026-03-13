@@ -452,7 +452,7 @@ button {
   }
 }
 
-/* Кнопка для сбора награды */
+/* кнопка для сбора награды */
 .collect_reward {
   position: fixed;
   bottom: 20%;
@@ -487,10 +487,12 @@ button {
 .collect_reward:active {
   transform: translateX(-50%) scale(0.95);
 }
+
+/* ЭКРАН 3 */
 .block3 {
+  position: relative;
   width: 100%;
-  overflow-x: hidden;
-  height: 66vw;
+  min-height: 100vh;
 }
 
 .elips_1 {
@@ -682,6 +684,134 @@ button {
   animation: floatWires 7s ease-in-out infinite;
 }
 
+/* окошко с правилами для пульта */
+.soundpad_popup {
+  position: absolute;
+  left: 5vw;
+  top: 20%;
+  width: 29.5vw;
+  height: 13.4vw;
+  background: #ffdb70;
+  border-radius: 37px;
+  padding: 1.5vw 2vw;
+  display: none;
+  align-items: center;
+  gap: 1.5vw;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideFromLeft 0.4s ease;
+}
+
+/* размеры для каждой птицы */
+.soundpad_popup[data-bird="1"] {
+  width: 29.5vw;
+  height: 13.4vw;
+}
+
+.soundpad_popup[data-bird="2"] {
+  width: 29.5vw;
+  height: 15vw; /* высота для 2 птицы */
+}
+
+.soundpad_popup[data-bird="3"] {
+  width: 36.5vw; /* ширина для 3 птицы */
+  height: 13.8vw;
+}
+
+.soundpad_popup.show {
+  display: flex;
+}
+
+/* контейнер для содержимого */
+.soundpad_content {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  width: 100%;
+  height: 100%;
+}
+
+/* контейнер для текста с изменяемыми размерами */
+.soundpad_text_container {
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.soundpad_popup[data-bird="1"] .soundpad_text_container {
+  width: 19vw;
+  height: 7vw;
+}
+
+.soundpad_popup[data-bird="2"] .soundpad_text_container {
+  width: 18.6vw;
+  height: 8.5vw;
+}
+
+.soundpad_popup[data-bird="3"] .soundpad_text_container {
+  width: 24.8vw;
+  height: 8.5vw;
+}
+
+/* текст внутри окошка */
+.soundpad_text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.3vw;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* картинка птички */
+.soundpad_bird {
+  width: 15vw;
+  height: 15vw;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* кнопка закрытия */
+.soundpad_close {
+  position: absolute;
+  bottom: -3vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 3vw;
+  padding: 0.8vw 2vw;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1vw;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  z-index: 101;
+}
+
+.soundpad_close:hover {
+  background: #f0f0f0;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.soundpad_close:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* анимация появления */
+@keyframes slideFromLeft {
+  0% {
+    left: -10vw;
+    opacity: 0;
+  }
+  100% {
+    left: 5vw;
+    opacity: 1;
+  }
+}
 .reflected {
   transform: rotate(180deg);
 }

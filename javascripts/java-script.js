@@ -73,6 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
     "./images/bird3mini.svg",
   ];
 
+  const soundpadPopup = document.getElementById("soundpadPopup");
+  const soundpadBird = document.getElementById("soundpadBird");
+  const soundpadText = document.getElementById("soundpadText");
+  const closeSoundpad = document.getElementById("closeSoundpad");
+  const soundpadTextContainer = document.getElementById(
+    "soundpadTextContainer",
+  );
+  // тексты для пульта
+  const soundpadTexts = [
+    "Это пульт. Кликни — он вырастет. Крути ручки, жми кнопки, создавай свой звук. Здесь ты главный!",
+    "Это пульт. Кликни — он откроется. Крути ручки, нажимай клавиши, создавай своё звучание. Здесь ты главный творец!",
+    "Это не игрушки. Это пульт, на котором рождается звук. Кликни, увеличься, покрути всё, что хочешь. Не бойся ошибиться — ошибки тут часто звучат круче, чем задумки",
+  ];
   // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
@@ -116,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
       html.style.overflow = "";
     }
   }
-
+  // СМЕНА ЭЛЕМЕНТОВ
   function changeAllElements(index) {
     const bird = birds[index];
 
@@ -142,10 +155,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (laptop) laptop.src = bird.laptop;
     if (wires) wires.src = bird.wires;
 
-    // текст и картинка в окошке
+    // текст и картинка в первом окошке
     if (rulesText) rulesText.textContent = rulesTexts[index];
     if (rulesBird) rulesBird.src = birdMiniImages[index];
-
+    // второе окошко
+    if (soundpadBird) soundpadBird.src = birdMiniImages[index];
+    if (soundpadText) soundpadText.textContent = soundpadTexts[index];
+    if (soundpadPopup) {
+      soundpadPopup.setAttribute("data-bird", bird.size);
+    }
     // ЦВЕТА НА 3 ЭКРАНЕ
     const allElips = document.querySelectorAll(".elips_1, .elips_2, .elips_3");
     allElips.forEach((el) => {
@@ -177,25 +195,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const rewardVinyl = document.getElementById("rewardVinyl");
   const collectRewardBtn = document.createElement("button");
 
-  // Создаем кнопку сбора награды
+  // кнопка сбора награды
   collectRewardBtn.className = "collect_reward";
   collectRewardBtn.id = "collectReward";
   collectRewardBtn.textContent = "забрать пластинку";
   document.body.appendChild(collectRewardBtn);
 
-  // Функция показа награды
+  // функция показа награды
   function showReward() {
     if (rewardVinyl) {
       rewardVinyl.classList.add("show");
 
-      // Показываем кнопку после анимации
       setTimeout(() => {
         collectRewardBtn.classList.add("show");
       }, 1500);
     }
   }
 
-  // Функция сброса награды
+  // функция сброса награды
   function resetReward() {
     if (rewardVinyl) {
       rewardVinyl.classList.remove("show");
@@ -203,11 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
     collectRewardBtn.classList.remove("show");
   }
 
-  // Обработчик для кнопки сбора награды
+  // обработчик для кнопки сбора награды
   collectRewardBtn.addEventListener("click", function () {
     rewardVinyl.classList.remove("show");
     collectRewardBtn.classList.remove("show");
-    // Просто скрываем награду, без сообщения
   });
 
   // DRAG & DROP
@@ -309,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
       el.style.pointerEvents = "auto";
       el.style.opacity = "1";
     });
-    resetReward(); // сбрасываем награду
+    resetReward();
   }
 
   // ОБРАБОТЧИКИ
@@ -329,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // В обработчике кнопки подтверждения УБИРАЕМ показ окошка
   confirmBtn.onclick = function (e) {
     e.preventDefault();
 
@@ -342,19 +357,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       toggleScroll(false);
 
-      // Окошко НЕ показываем здесь!
-
       console.log("Выбор подтвержден, скролл разблокирован");
     }
   };
 
-  // Отслеживаем скролл до второго экрана
+  // скролл до второго экрана
   window.addEventListener("scroll", function () {
     const block2 = document.getElementById("block2");
     const block2Position = block2.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
-    // Когда второй экран появляется в окне
+    //второй экран появляется в окне
     if (block2Position < windowHeight - 100 && block2Position > -100) {
       if (
         rulesPopup &&
@@ -368,14 +381,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Закрытие по кнопке
+  // закрытие по кнопке
   if (closeRules) {
     closeRules.addEventListener("click", function () {
       rulesPopup.classList.remove("show");
     });
   }
 
-  // Закрытие по клику вне окошка (без затемнения)
+  // закрытие по клику вне окошка (без затемнения)
   document.addEventListener("click", function (e) {
     if (
       rulesPopup.classList.contains("show") &&
@@ -385,6 +398,46 @@ document.addEventListener("DOMContentLoaded", function () {
       rulesPopup.classList.remove("show");
     }
   });
+
+  // скролл до третьего экрана
+  window.addEventListener("scroll", function () {
+    const block3 = document.getElementById("block3");
+    const block3Position = block3.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    // третий экран появляется в окне
+    if (block3Position < windowHeight - 100 && block3Position > -100) {
+      if (
+        soundpadPopup &&
+        !soundpadPopup.classList.contains("show") &&
+        !window.hasShownSoundpad
+      ) {
+        soundpadPopup.classList.add("show");
+        window.hasShownSoundpad = true;
+        console.log("Окошко с пультом показано");
+      }
+    }
+  });
+
+  // закрытие по кнопке
+  if (closeSoundpad) {
+    closeSoundpad.addEventListener("click", function () {
+      soundpadPopup.classList.remove("show");
+    });
+  }
+
+  // закрытие по клику вне окошка
+  document.addEventListener("click", function (e) {
+    if (
+      soundpadPopup &&
+      soundpadPopup.classList.contains("show") &&
+      !soundpadPopup.contains(e.target) &&
+      e.target !== closeSoundpad
+    ) {
+      soundpadPopup.classList.remove("show");
+    }
+  });
+
   // ИНИЦИАЛИЗАЦИЯ
   // toggleScroll(true);
   changeAllElements(0);
