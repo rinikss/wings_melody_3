@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       image: "./images/bird1.svg",
       color: "#12101C",
+      popup_color: "#12101C",
       size: "1",
       box: "./images/box.svg",
       note_1: "./images/note_1.svg",
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       image: "./images/bird2.svg",
       color: "#00313B",
+      popup_color: "#00313B",
       size: "2",
       box: "./images/box2.svg",
       note_1: "./images/note_11.svg",
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       image: "./images/bird3.svg",
       color: "#00117D",
+      popup_color: "#00117D",
       size: "3",
       box: "./images/box3.svg",
       note_1: "./images/note_111.svg",
@@ -80,12 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const soundpadTextContainer = document.getElementById(
     "soundpadTextContainer",
   );
+
   // тексты для пульта
   const soundpadTexts = [
     "Это пульт. Кликни — он вырастет. Крути ручки, жми кнопки, создавай свой звук. Здесь ты главный!",
     "Это пульт. Кликни — он откроется. Крути ручки, нажимай клавиши, создавай своё звучание. Здесь ты главный творец!",
     "Это не игрушки. Это пульт, на котором рождается звук. Кликни, увеличься, покрути всё, что хочешь. Не бойся ошибиться — ошибки тут часто звучат круче, чем задумки",
   ];
+
   // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
@@ -111,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeRules = document.getElementById("closeRules");
 
   // ЭЛЕМЕНТЫ ТРЕТЬЕГО ЭКРАНА
+  const pultPopup = document.getElementById("pultPopup");
+  const closePult = document.getElementById("closePult");
   const soundpad = document.getElementById("SoundPad");
   const laptop = document.getElementById("LapTop");
   const wires = document.getElementById("wires");
@@ -129,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
       html.style.overflow = "";
     }
   }
+
   // СМЕНА ЭЛЕМЕНТОВ
   function changeAllElements(index) {
     const bird = birds[index];
@@ -150,20 +158,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (microphone) microphone.src = bird.microphone;
     if (vinyl) vinyl.src = bird.vinyl;
 
-    //  все элементы 3 экрана
+    // все элементы 3 экрана
     if (soundpad) soundpad.src = bird.soundpad;
     if (laptop) laptop.src = bird.laptop;
     if (wires) wires.src = bird.wires;
 
+    // ЦВЕТ ПОП-АПА
+    if (pultPopup) {
+      pultPopup.style.backgroundColor = bird.popup_color;
+    }
+
     // текст и картинка в первом окошке
     if (rulesText) rulesText.textContent = rulesTexts[index];
     if (rulesBird) rulesBird.src = birdMiniImages[index];
+
     // второе окошко
     if (soundpadBird) soundpadBird.src = birdMiniImages[index];
     if (soundpadText) soundpadText.textContent = soundpadTexts[index];
     if (soundpadPopup) {
       soundpadPopup.setAttribute("data-bird", bird.size);
     }
+
     // ЦВЕТА НА 3 ЭКРАНЕ
     const allElips = document.querySelectorAll(".elips_1, .elips_2, .elips_3");
     allElips.forEach((el) => {
@@ -176,7 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    console.log(`Смена на птицу ${index + 1}, цвет фона: ${bird.color}`);
+    console.log(
+      `Смена на птицу ${index + 1}, цвет фона: ${bird.color}, цвет попапа: ${bird.popup_color}`,
+    );
   }
 
   function changeBird(index) {
@@ -189,7 +206,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 150);
   }
 
-  // DRAG & DROP
+  // ========== ВЫНОСИМ ОБРАБОТЧИКИ ПОП-АПА СЮДА ==========
+
+  // ОТКРЫТИЕ ПОП-АПА ПО КЛИКУ НА САУНДПАД
+  if (soundpad) {
+    soundpad.style.cursor = "pointer";
+    soundpad.addEventListener("click", function () {
+      if (isConfirmed) {
+        pultPopup.classList.add("show");
+        // Блокируем скролл
+        body.style.overflow = "hidden";
+        html.style.overflow = "hidden";
+        console.log("Поп-ап с пультом открыт");
+      } else {
+        alert("Сначала выбери персонажа!");
+      }
+    });
+  }
+
+  // ЗАКРЫТИЕ ПОП-АПА ПО КРЕСТИКУ
+  if (closePult) {
+    closePult.addEventListener("click", function () {
+      pultPopup.classList.remove("show");
+      // Возвращаем скролл
+      body.style.overflow = "";
+      html.style.overflow = "";
+    });
+  }
+
+  // ЗАКРЫТИЕ ПО КЛИКУ НА ЗАТЕМНЕННЫЙ ФОН
+  if (pultPopup) {
+    pultPopup.addEventListener("click", function (e) {
+      if (e.target === pultPopup) {
+        pultPopup.classList.remove("show");
+        body.style.overflow = "";
+        html.style.overflow = "";
+      }
+    });
+  }
+
+  // ========== DRAG & DROP И НАГРАДА ==========
 
   // награда
   const rewardVinyl = document.getElementById("rewardVinyl");
@@ -205,7 +261,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function showReward() {
     if (rewardVinyl) {
       rewardVinyl.classList.add("show");
-
       setTimeout(() => {
         collectRewardBtn.classList.add("show");
       }, 1500);
@@ -328,7 +383,8 @@ document.addEventListener("DOMContentLoaded", function () {
     resetReward();
   }
 
-  // ОБРАБОТЧИКИ
+  // ========== ОБРАБОТЧИКИ КНОПОК ==========
+
   leftArrow.onclick = function (e) {
     e.preventDefault();
     if (!isConfirmed) {
@@ -361,13 +417,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // ДОБАВЛЯЕМ КЛАВИШАМ ВРЕМЕННЫЙ ОБРАБОТЧИК
+  document.querySelectorAll(".piano_upper_key, .piano_key").forEach((key) => {
+    key.addEventListener("click", function () {
+      console.log("Нажата клавиша:", this.dataset.key || "обычная");
+    });
+  });
+
+  // ========== СКРОЛЛ И ОКОШКИ ==========
+
   // скролл до второго экрана
   window.addEventListener("scroll", function () {
     const block2 = document.getElementById("block2");
     const block2Position = block2.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
-    //второй экран появляется в окне
     if (block2Position < windowHeight - 100 && block2Position > -100) {
       if (
         rulesPopup &&
@@ -375,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
         !window.hasShownRules
       ) {
         rulesPopup.classList.add("show");
-        window.hasShownRules = true; // чтобы не показывалось каждый раз при скролле
+        window.hasShownRules = true;
         console.log("Окошко с правилами показано");
       }
     }
@@ -388,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // закрытие по клику вне окошка (без затемнения)
+  // закрытие по клику вне окошка
   document.addEventListener("click", function (e) {
     if (
       rulesPopup.classList.contains("show") &&
@@ -405,7 +469,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const block3Position = block3.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
-    // третий экран появляется в окне
     if (block3Position < windowHeight - 100 && block3Position > -100) {
       if (
         soundpadPopup &&
@@ -438,9 +501,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ИНИЦИАЛИЗАЦИЯ
+  // ========== ИНИЦИАЛИЗАЦИЯ ==========
   // toggleScroll(true);
   changeAllElements(0);
   birdImage.style.opacity = "1";
   // console.log("Скрипт загружен, скролл заблокирован");
+
+  // РЫЧАГИ
+  const levers = document.querySelectorAll(".lever_button");
+  function getCurrentAngle(element) {
+    const transform = window.getComputedStyle(element).transform;
+    if (transform === "none") return 0;
+
+    const values = transform.split("(")[1].split(")")[0].split(",");
+    const a = values[0];
+    const b = values[1];
+    const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+    return angle;
+  }
+
+  levers.forEach((lever, index) => {
+    let currentAngle = getCurrentAngle(lever);
+
+    lever.addEventListener("click", function () {
+      currentAngle = (currentAngle + 45) % 360;
+      this.style.transform = `rotate(${currentAngle}deg)`;
+    });
+  });
 });

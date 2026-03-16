@@ -801,7 +801,6 @@ button {
   transform: translateX(-50%) scale(0.95);
 }
 
-/* анимация появления */
 @keyframes slideFromLeft {
   0% {
     left: -10vw;
@@ -825,4 +824,345 @@ button {
 .reflected-3 {
   margin-left: 25vw;
   margin-top: 18vw;
+}
+
+.pult_popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 71vw;
+  height: 40vw;
+  background-color: #12101c;
+  border: 1vw solid white;
+  border-radius: 2.1vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: popupAppear 0.3s ease;
+}
+
+.pult_popup.show {
+  display: flex;
+}
+
+@keyframes popupAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.pult_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Кнопка закрытия */
+.pult_close {
+  position: absolute;
+  top: -1.5vw;
+  right: -1.5vw;
+  width: 3.5vw;
+  height: 3.5vw;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.5vw;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pult_close:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.pult_close:active {
+  transform: scale(0.95);
+}
+
+.pult_body {
+  position: absolute;
+  width: 61.8vw;
+  height: 33vw;
+  object-fit: contain;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.piano_container {
+  position: absolute;
+  width: 53.5vw;
+  height: 15.5vw;
+  top: 21.2vw;
+  left: 35vw;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.piano_lower_keys {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.piano_key {
+  width: 3.5vw;
+  height: 15.5vw;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  margin-right: -0.3vw;
+  position: relative;
+}
+
+.first_key {
+  margin-left: 0;
+}
+
+.last_key {
+  margin-right: 0;
+}
+
+.piano_upper_keys {
+  position: absolute;
+  top: -1.5vw;
+  left: 0;
+  width: 100%;
+  height: 9.3vw;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.piano_upper_keys {
+  position: absolute;
+  top: 0.2vw;
+  left: 0;
+  width: 100%;
+  height: 9.3vw;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.piano_upper_key {
+  position: absolute;
+  width: 2vw;
+  height: 9.3vw;
+  object-fit: contain;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.1s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.piano_upper_key[data-key="1"] {
+  left: 2.5vw;
+}
+.piano_upper_key[data-key="2"] {
+  left: 9vw;
+}
+.piano_upper_key[data-key="3"] {
+  left: 12vw;
+}
+.piano_upper_key[data-key="4"] {
+  left: 15vw;
+}
+.piano_upper_key[data-key="5"] {
+  left: 21.8vw;
+}
+.piano_upper_key[data-key="6"] {
+  left: 25vw;
+}
+.piano_upper_key[data-key="7"] {
+  left: 31vw;
+}
+.piano_upper_key[data-key="8"] {
+  left: 34vw;
+}
+.piano_upper_key[data-key="9"] {
+  left: 37.4vw;
+}
+.piano_upper_key[data-key="10"] {
+  left: 43.4vw;
+}
+.piano_upper_key[data-key="11"] {
+  left: 46.6vw;
+}
+.piano_upper_key[data-key="12"] {
+  left: 50vw;
+}
+
+.piano_upper_key:active {
+  transform: translateY(0.2vw);
+  filter: brightness(0.9);
+}
+
+.glow_button {
+  position: absolute;
+  width: 16.5vw;
+  height: 16.5vw;
+  object-fit: contain;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.2s ease;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.btn_1 {
+  left: 3vw;
+  top: 0vw;
+}
+.btn_2 {
+  left: 11vw;
+  top: 0vw;
+}
+.btn_3 {
+  left: 19vw;
+  top: 0vw;
+}
+
+.btn_4 {
+  left: 3vw;
+  top: 8vw;
+}
+.btn_5 {
+  left: 11vw;
+  top: 8vw;
+}
+.btn_6 {
+  left: 19vw;
+  top: 8vw;
+}
+
+.glow_button:hover {
+  transform: scale(1.1);
+  animation: none;
+}
+
+.glow_button:active {
+  transform: scale(0.95);
+}
+.lever_button {
+  position: absolute;
+  width: 2.5vw;
+  height: 3vw;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 6;
+}
+
+.lever_1 {
+  left: 34vw;
+  top: 5.8vw;
+  transform: rotate(0deg);
+}
+.lever_2 {
+  left: 39vw;
+  top: 5.8vw;
+  transform: rotate(45deg);
+}
+.lever_3 {
+  left: 44vw;
+  top: 5.8vw;
+  transform: rotate(-45deg);
+}
+.lever_4 {
+  left: 34vw;
+  top: 10vw;
+  transform: rotate(90deg);
+}
+.lever_5 {
+  left: 39vw;
+  top: 10vw;
+  transform: rotate(-90deg);
+}
+.lever_6 {
+  left: 44vw;
+  top: 10vw;
+  transform: rotate(180deg);
+}
+
+.lever_button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+.simple_button {
+  position: absolute;
+  width: 3.9vw;
+  height: 1.6vw;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.simple_1 {
+  left: 33vw;
+  top: 14vw;
+}
+
+.simple_2 {
+  left: 38vw;
+  top: 14vw;
+}
+
+.simple_3 {
+  left: 43vw;
+  top: 14vw;
+}
+
+.simple_4 {
+  left: 33vw;
+  top: 17.5vw;
+}
+
+.simple_5 {
+  left: 38vw;
+  top: 17.5vw;
+}
+
+.simple_6 {
+  left: 43vw;
+  top: 17.5vw;
+}
+
+/* Эффекты */
+.simple_button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.simple_button:active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
 }
