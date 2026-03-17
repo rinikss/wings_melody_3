@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
       soundpad: "./images/console_1.svg",
       laptop: "./images/laptop_1.svg",
       wires: "./images/wires.svg",
+      lever: "./images/lever_bttn.svg",
+      light_btn1: "./images/light_bttn1.svg",
+      light_btn2: "./images/light_bttn2.svg",
+      simple_btn: "./images/simpl_bttn.svg",
+      slider_stroke: "./images/stroke.svg",
+      slider_thumb: "./images/slider.svg",
     },
     {
       image: "./images/bird2.svg",
@@ -40,6 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
       soundpad: "./images/console_2.svg",
       laptop: "./images/laptop_2.svg",
       wires: "./images/wires_2.svg",
+      lever: "./images/lever_bttn2.svg",
+      light_btn1: "./images/light_bttn11.svg",
+      light_btn2: "./images/light_bttn22.svg",
+      simple_btn: "./images/simpl_bttn2.svg",
+      slider_stroke: "./images/stroke.svg",
+      slider_thumb: "./images/slider_2.svg",
     },
     {
       image: "./images/bird3.svg",
@@ -60,14 +72,26 @@ document.addEventListener("DOMContentLoaded", function () {
       soundpad: "./images/console_3.svg",
       laptop: "./images/laptop_3.svg",
       wires: "./images/wires_3.svg",
+      lever: "./images/lever_bttn3.svg",
+      light_btn1: "./images/light_bttn111.svg",
+      light_btn2: "./images/light_bttn222.svg",
+      simple_btn: "./images/simpl_bttn2.svg",
+      slider_stroke: "./images/stroke.svg",
+      slider_thumb: "./images/slider_3.svg",
     },
   ];
 
-  // ТЕКСТЫ И КАРТИНКИ ДЛЯ ОКОШЕК
+  //ТЕКСТЫ
   const rulesTexts = [
     "Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные инструменты. Перетащи их внутрь так, чтобы заполнить все пустые клетки. Ни одной свободной, ни одного наложения. Как идеальный чемодан в тур. Справишься?",
     "Друг мой, посмотри: ноты и инструменты ждут своего места. Перетащи их в пустые клетки так, чтобы заполнить всё поле. Ни одной свободной клеточки, как в идеальной мелодии ни одной лишней ноты. У тебя получится!",
     "Смотри сюда. Поле пустое, вокруг — элементы. Твоя задача: заполнить всё без пробелов. Никакой магии, просто логика и чувство формы. Музыка любит порядок, даже когда кажется, что она хаотична. Давай, у тебя есть вкус, я знаю.",
+  ];
+
+  const soundpadTexts = [
+    "Это пульт. Кликни — он вырастет. Крути ручки, жми кнопки, создавай свой звук. Здесь ты главный!",
+    "Это пульт. Кликни — он откроется. Крути ручки, нажимай клавиши, создавай своё звучание. Здесь ты главный творец!",
+    "Это не игрушки. Это пульт, на котором рождается звук. Кликни, увеличься, покрути всё, что хочешь. Не бойся ошибиться — ошибки тут часто звучат круче, чем задумки",
   ];
 
   const birdMiniImages = [
@@ -76,22 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "./images/bird3mini.svg",
   ];
 
-  const soundpadPopup = document.getElementById("soundpadPopup");
-  const soundpadBird = document.getElementById("soundpadBird");
-  const soundpadText = document.getElementById("soundpadText");
-  const closeSoundpad = document.getElementById("closeSoundpad");
-  const soundpadTextContainer = document.getElementById(
-    "soundpadTextContainer",
-  );
-
-  // тексты для пульта
-  const soundpadTexts = [
-    "Это пульт. Кликни — он вырастет. Крути ручки, жми кнопки, создавай свой звук. Здесь ты главный!",
-    "Это пульт. Кликни — он откроется. Крути ручки, нажимай клавиши, создавай своё звучание. Здесь ты главный творец!",
-    "Это не игрушки. Это пульт, на котором рождается звук. Кликни, увеличься, покрути всё, что хочешь. Не бойся ошибиться — ошибки тут часто звучат круче, чем задумки",
-  ];
-
-  // ЭЛЕМЕНТЫ ПЕРВОГО ЭКРАНА
+  // ЭЛЕМЕНТЫ
+  // первый экран
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -99,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const html = document.documentElement;
 
-  // ЭЛЕМЕНТЫ ВТОРОГО ЭКРАНА
+  // второй экран
   const box = document.getElementById("tetrisBox");
   const note1 = document.getElementById("note1");
   const note2 = document.getElementById("note2");
@@ -109,15 +119,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const microphone = document.getElementById("microphone");
   const vinyl = document.getElementById("vinyl");
 
-  // ЭЛЕМЕНТЫ ОКОШКА
+  // окошки
   const rulesPopup = document.getElementById("rulesPopup");
   const rulesBird = document.getElementById("rulesBird");
   const rulesText = document.getElementById("rulesText");
   const closeRules = document.getElementById("closeRules");
 
-  // ЭЛЕМЕНТЫ ТРЕТЬЕГО ЭКРАНА
+  const soundpadPopup = document.getElementById("soundpadPopup");
+  const soundpadBird = document.getElementById("soundpadBird");
+  const soundpadText = document.getElementById("soundpadText");
+  const closeSoundpad = document.getElementById("closeSoundpad");
+
   const pultPopup = document.getElementById("pultPopup");
   const closePult = document.getElementById("closePult");
+
+  // третий экран
   const soundpad = document.getElementById("SoundPad");
   const laptop = document.getElementById("LapTop");
   const wires = document.getElementById("wires");
@@ -126,160 +142,138 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentBird = 0;
   let isConfirmed = false;
 
-  // ФУНКЦИИ
-  function toggleScroll(lock) {
-    if (lock) {
-      body.style.overflow = "hidden";
-      html.style.overflow = "hidden";
-    } else {
-      body.style.overflow = "";
-      html.style.overflow = "";
-    }
-  }
+  const toggleScroll = (lock) => {
+    body.style.overflow = lock ? "hidden" : "";
+    html.style.overflow = lock ? "hidden" : "";
+  };
 
-  // СМЕНА ЭЛЕМЕНТОВ
+  const setElementSrc = (element, src) => {
+    if (element) element.src = src;
+  };
+
+  // ОСНОВНАЯ ФУНКЦИЯ СМЕНЫ
   function changeAllElements(index) {
     const bird = birds[index];
 
-    birdImage.src = bird.image;
+    // первый экран
+    setElementSrc(birdImage, bird.image);
     birdImage.setAttribute("data-bird", bird.size);
+    if (!isConfirmed) body.style.backgroundColor = bird.color;
 
-    if (!isConfirmed) {
-      body.style.backgroundColor = bird.color;
+    // второй экран
+    setElementSrc(box, bird.box);
+    setElementSrc(note1, bird.note_1);
+    setElementSrc(note2, bird.note_2);
+    setElementSrc(headphones, bird.headphones);
+    setElementSrc(guitar, bird.guitar);
+    setElementSrc(sticks, bird.sticks);
+    setElementSrc(microphone, bird.microphone);
+    setElementSrc(vinyl, bird.vinyl);
+
+    // третий экран основные элементы
+    setElementSrc(soundpad, bird.soundpad);
+    setElementSrc(laptop, bird.laptop);
+    setElementSrc(wires, bird.wires);
+    if (pultPopup) pultPopup.style.backgroundColor = bird.popup_color;
+    // ОТКРЫТИЕ ПУЛЬТА
+    if (soundpad) {
+      soundpad.style.cursor = "pointer";
+      soundpad.addEventListener("click", function () {
+        if (isConfirmed) {
+          // Проверяем что элемент существует
+          const pultPopup = document.getElementById("pultPopup");
+          if (pultPopup) {
+            pultPopup.classList.add("show");
+            toggleScroll(true);
+            console.log("Попап с пультом открыт");
+          } else {
+            console.log("Элемент pultPopup не найден в HTML");
+          }
+        } else {
+          alert("Сначала выбери персонажа!");
+        }
+      });
     }
-
-    // все элементы второго экрана
-    if (box) box.src = bird.box;
-    if (note1) note1.src = bird.note_1;
-    if (note2) note2.src = bird.note_2;
-    if (headphones) headphones.src = bird.headphones;
-    if (guitar) guitar.src = bird.guitar;
-    if (sticks) sticks.src = bird.sticks;
-    if (microphone) microphone.src = bird.microphone;
-    if (vinyl) vinyl.src = bird.vinyl;
-
-    // все элементы 3 экрана
-    if (soundpad) soundpad.src = bird.soundpad;
-    if (laptop) laptop.src = bird.laptop;
-    if (wires) wires.src = bird.wires;
-
-    // ЦВЕТ ПОП-АПА
-    if (pultPopup) {
-      pultPopup.style.backgroundColor = bird.popup_color;
-    }
-
-    // текст и картинка в первом окошке
+    //  тексты в окошках
     if (rulesText) rulesText.textContent = rulesTexts[index];
     if (rulesBird) rulesBird.src = birdMiniImages[index];
-
-    // второе окошко
     if (soundpadBird) soundpadBird.src = birdMiniImages[index];
     if (soundpadText) soundpadText.textContent = soundpadTexts[index];
-    if (soundpadPopup) {
-      soundpadPopup.setAttribute("data-bird", bird.size);
-    }
+    if (soundpadPopup) soundpadPopup.setAttribute("data-bird", bird.size);
 
-    // ЦВЕТА НА 3 ЭКРАНЕ
-    const allElips = document.querySelectorAll(".elips_1, .elips_2, .elips_3");
-    allElips.forEach((el) => {
-      if (el.classList.contains("elips_1")) {
+    // цвета эллипсов
+    document.querySelectorAll(".elips_1, .elips_2, .elips_3").forEach((el) => {
+      if (el.classList.contains("elips_1"))
         el.style.backgroundColor = bird.elips1_color;
-      } else if (el.classList.contains("elips_2")) {
+      else if (el.classList.contains("elips_2"))
         el.style.backgroundColor = bird.elips2_color;
-      } else if (el.classList.contains("elips_3")) {
+      else if (el.classList.contains("elips_3"))
         el.style.backgroundColor = bird.elips3_color;
-      }
     });
 
-    console.log(
-      `Смена на птицу ${index + 1}, цвет фона: ${bird.color}, цвет попапа: ${bird.popup_color}`,
-    );
+    // рычажки
+    document.querySelectorAll(".lever_button").forEach((el) => {
+      el.src = bird.lever;
+    });
+
+    // светящиеся кнопки
+    const glowButtons = document.querySelectorAll(".glow_button");
+    if (glowButtons.length >= 6) {
+      glowButtons[0].src = bird.light_btn1;
+      glowButtons[1].src = bird.light_btn2;
+      glowButtons[2].src = bird.light_btn2;
+      glowButtons[3].src = bird.light_btn2;
+      glowButtons[4].src = bird.light_btn1;
+      glowButtons[5].src = bird.light_btn1;
+    }
+
+    // простые кнопки
+    document.querySelectorAll(".simple_button").forEach((el) => {
+      el.src = bird.simple_btn;
+    });
+
+    // ползунки
+    document.querySelectorAll(".slider_stroke").forEach((el) => {
+      el.src = bird.slider_stroke;
+    });
+    document.querySelectorAll(".slider_thumb").forEach((el) => {
+      el.src = bird.slider_thumb;
+    });
+
+    console.log(`Смена на птицу ${index + 1}`);
   }
 
+  // АНИМАЦИЯ СМЕНЫ ПТИЦЫ
   function changeBird(index) {
     birdImage.style.transition = "opacity 0.2s ease";
     birdImage.style.opacity = "0";
-
     setTimeout(() => {
       changeAllElements(index);
       birdImage.style.opacity = "1";
     }, 150);
   }
 
-  // ========== ВЫНОСИМ ОБРАБОТЧИКИ ПОП-АПА СЮДА ==========
-
-  // ОТКРЫТИЕ ПОП-АПА ПО КЛИКУ НА САУНДПАД
-  if (soundpad) {
-    soundpad.style.cursor = "pointer";
-    soundpad.addEventListener("click", function () {
-      if (isConfirmed) {
-        pultPopup.classList.add("show");
-        // Блокируем скролл
-        body.style.overflow = "hidden";
-        html.style.overflow = "hidden";
-        console.log("Поп-ап с пультом открыт");
-      } else {
-        alert("Сначала выбери персонажа!");
-      }
-    });
-  }
-
-  // ЗАКРЫТИЕ ПОП-АПА ПО КРЕСТИКУ
-  if (closePult) {
-    closePult.addEventListener("click", function () {
-      pultPopup.classList.remove("show");
-      // Возвращаем скролл
-      body.style.overflow = "";
-      html.style.overflow = "";
-    });
-  }
-
-  // ЗАКРЫТИЕ ПО КЛИКУ НА ЗАТЕМНЕННЫЙ ФОН
-  if (pultPopup) {
-    pultPopup.addEventListener("click", function (e) {
-      if (e.target === pultPopup) {
-        pultPopup.classList.remove("show");
-        body.style.overflow = "";
-        html.style.overflow = "";
-      }
-    });
-  }
-
-  // ========== DRAG & DROP И НАГРАДА ==========
-
-  // награда
+  // НАГРАДА
   const rewardVinyl = document.getElementById("rewardVinyl");
   const collectRewardBtn = document.createElement("button");
-
-  // кнопка сбора награды
   collectRewardBtn.className = "collect_reward";
   collectRewardBtn.id = "collectReward";
   collectRewardBtn.textContent = "забрать пластинку";
   document.body.appendChild(collectRewardBtn);
 
-  // функция показа награды
-  function showReward() {
+  const showReward = () => {
     if (rewardVinyl) {
       rewardVinyl.classList.add("show");
-      setTimeout(() => {
-        collectRewardBtn.classList.add("show");
-      }, 1500);
+      setTimeout(() => collectRewardBtn.classList.add("show"), 1500);
     }
-  }
+  };
 
-  // функция сброса награды
-  function resetReward() {
-    if (rewardVinyl) {
-      rewardVinyl.classList.remove("show");
-    }
+  const resetReward = () => {
+    if (rewardVinyl) rewardVinyl.classList.remove("show");
     collectRewardBtn.classList.remove("show");
-  }
+  };
 
-  // обработчик для кнопки сбора награды
-  collectRewardBtn.addEventListener("click", function () {
-    rewardVinyl.classList.remove("show");
-    collectRewardBtn.classList.remove("show");
-  });
+  collectRewardBtn.addEventListener("click", resetReward);
 
   // DRAG & DROP
   const draggableElements = document.querySelectorAll(
@@ -301,16 +295,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function onMouseDown(e) {
     e.preventDefault();
-
     if (!isConfirmed) {
       alert("Сначала выбери персонажа!");
       return;
     }
-
     if (this.classList.contains("placed")) return;
 
     activeElement = this;
-
     const rect = activeElement.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
@@ -326,12 +317,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function onMouseMove(e) {
     e.preventDefault();
     if (!activeElement) return;
-
-    const newX = e.clientX - offsetX;
-    const newY = e.clientY - offsetY;
-
-    activeElement.style.left = newX + "px";
-    activeElement.style.top = newY + "px";
+    activeElement.style.left = e.clientX - offsetX + "px";
+    activeElement.style.top = e.clientY - offsetY + "px";
   }
 
   function onMouseUp(e) {
@@ -339,7 +326,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const elementRect = activeElement.getBoundingClientRect();
     const dropRect = dropZone.getBoundingClientRect();
-
     const centerX = elementRect.left + elementRect.width / 2;
     const centerY = elementRect.top + elementRect.height / 2;
 
@@ -356,12 +342,8 @@ document.addEventListener("DOMContentLoaded", function () {
       placedItems.push(activeElement);
 
       if (placedItems.length === draggableElements.length) {
-        setTimeout(() => {
-          showReward();
-        }, 100);
+        setTimeout(showReward, 100);
       }
-    } else {
-      console.log("Брошен мимо поля");
     }
 
     activeElement.style.zIndex = "10";
@@ -372,20 +354,25 @@ document.addEventListener("DOMContentLoaded", function () {
     activeElement = null;
   }
 
-  // функция сброса Drag & Drop
-  function resetDragAndDrop() {
-    placedItems = [];
-    draggableElements.forEach((el) => {
-      el.classList.remove("placed");
-      el.style.pointerEvents = "auto";
-      el.style.opacity = "1";
+  // РЫЧАЖКИ
+  const levers = document.querySelectorAll(".lever_button");
+  levers.forEach((lever) => {
+    let angle = 0;
+    lever.addEventListener("click", function () {
+      angle = (angle + 45) % 360;
+      this.style.transform = `rotate(${angle}deg)`;
     });
-    resetReward();
-  }
+  });
 
-  // ========== ОБРАБОТЧИКИ КНОПОК ==========
+  // КЛАВИШИ ПИАНИНО
+  document.querySelectorAll(".piano_upper_key, .piano_key").forEach((key) => {
+    key.addEventListener("click", () => {
+      console.log("Нажата клавиша:", key.dataset.key || "обычная");
+    });
+  });
 
-  leftArrow.onclick = function (e) {
+  //  ОБРАБОТЧИКИ КНОПОК
+  leftArrow.onclick = (e) => {
     e.preventDefault();
     if (!isConfirmed) {
       currentBird = (currentBird - 1 + birds.length) % birds.length;
@@ -393,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  rightArrow.onclick = function (e) {
+  rightArrow.onclick = (e) => {
     e.preventDefault();
     if (!isConfirmed) {
       currentBird = (currentBird + 1) % birds.length;
@@ -401,131 +388,112 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  confirmBtn.onclick = function (e) {
+  confirmBtn.onclick = (e) => {
     e.preventDefault();
-
     if (!isConfirmed) {
       isConfirmed = true;
-
       confirmBtn.style.background = "#4CAF50";
       confirmBtn.style.color = "white";
       confirmBtn.textContent = "выбрано ✓";
-
       toggleScroll(false);
-
       console.log("Выбор подтвержден, скролл разблокирован");
     }
   };
 
-  // ДОБАВЛЯЕМ КЛАВИШАМ ВРЕМЕННЫЙ ОБРАБОТЧИК
-  document.querySelectorAll(".piano_upper_key, .piano_key").forEach((key) => {
-    key.addEventListener("click", function () {
-      console.log("Нажата клавиша:", this.dataset.key || "обычная");
+  // ОТКРЫТИЕ ПУЛЬТА
+  if (soundpad) {
+    soundpad.style.cursor = "pointer";
+    soundpad.addEventListener("click", function () {
+      if (isConfirmed) {
+        const pultPopup = document.getElementById("pultPopup");
+        if (pultPopup) {
+          pultPopup.style.display = "flex";
+          pultPopup.style.zIndex = "9999";
+          pultPopup.style.opacity = "1";
+          pultPopup.style.visibility = "visible";
+          pultPopup.classList.add("show");
+
+          toggleScroll(true);
+
+          console.log("Попап с пультом открыт", pultPopup);
+        } else {
+          console.log("Элемент pultPopup не найден в HTML");
+        }
+      } else {
+        alert("Сначала выбери персонажа!");
+      }
     });
-  });
+  }
 
-  // ========== СКРОЛЛ И ОКОШКИ ==========
-
-  // скролл до второго экрана
-  window.addEventListener("scroll", function () {
+  // СКРОЛЛ
+  window.addEventListener("scroll", () => {
     const block2 = document.getElementById("block2");
-    const block2Position = block2.getBoundingClientRect().top;
+    const block3 = document.getElementById("block3");
     const windowHeight = window.innerHeight;
 
-    if (block2Position < windowHeight - 100 && block2Position > -100) {
+    if (block2) {
+      const block2Pos = block2.getBoundingClientRect().top;
       if (
+        block2Pos < windowHeight - 100 &&
+        block2Pos > -100 &&
         rulesPopup &&
-        !rulesPopup.classList.contains("show") &&
         !window.hasShownRules
       ) {
         rulesPopup.classList.add("show");
         window.hasShownRules = true;
-        console.log("Окошко с правилами показано");
+      }
+    }
+
+    if (block3) {
+      const block3Pos = block3.getBoundingClientRect().top;
+      if (
+        block3Pos < windowHeight - 100 &&
+        block3Pos > -100 &&
+        soundpadPopup &&
+        !window.hasShownSoundpad
+      ) {
+        soundpadPopup.classList.add("show");
+        window.hasShownSoundpad = true;
       }
     }
   });
 
-  // закрытие по кнопке
-  if (closeRules) {
-    closeRules.addEventListener("click", function () {
-      rulesPopup.classList.remove("show");
-    });
-  }
-
-  // закрытие по клику вне окошка
-  document.addEventListener("click", function (e) {
+  // ЗАКРЫТИЕ ПОПАПОВ
+  document.addEventListener("click", (e) => {
     if (
-      rulesPopup.classList.contains("show") &&
+      rulesPopup?.classList.contains("show") &&
       !rulesPopup.contains(e.target) &&
       e.target !== closeRules
     ) {
       rulesPopup.classList.remove("show");
     }
-  });
-
-  // скролл до третьего экрана
-  window.addEventListener("scroll", function () {
-    const block3 = document.getElementById("block3");
-    const block3Position = block3.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (block3Position < windowHeight - 100 && block3Position > -100) {
-      if (
-        soundpadPopup &&
-        !soundpadPopup.classList.contains("show") &&
-        !window.hasShownSoundpad
-      ) {
-        soundpadPopup.classList.add("show");
-        window.hasShownSoundpad = true;
-        console.log("Окошко с пультом показано");
-      }
-    }
-  });
-
-  // закрытие по кнопке
-  if (closeSoundpad) {
-    closeSoundpad.addEventListener("click", function () {
-      soundpadPopup.classList.remove("show");
-    });
-  }
-
-  // закрытие по клику вне окошка
-  document.addEventListener("click", function (e) {
     if (
-      soundpadPopup &&
-      soundpadPopup.classList.contains("show") &&
+      soundpadPopup?.classList.contains("show") &&
       !soundpadPopup.contains(e.target) &&
       e.target !== closeSoundpad
     ) {
       soundpadPopup.classList.remove("show");
     }
+    if (
+      pultPopup?.classList.contains("show") &&
+      !pultPopup.contains(e.target) &&
+      e.target !== closePult
+    ) {
+      pultPopup.classList.remove("show");
+      toggleScroll(false);
+    }
   });
 
-  // ========== ИНИЦИАЛИЗАЦИЯ ==========
-  // toggleScroll(true);
+  if (closeRules)
+    closeRules.addEventListener("click", () =>
+      rulesPopup?.classList.remove("show"),
+    );
+  if (closeSoundpad)
+    closeSoundpad.addEventListener("click", () =>
+      soundpadPopup?.classList.remove("show"),
+    );
+
+  //  ИНИЦИАЛИЗАЦИЯ
   changeAllElements(0);
   birdImage.style.opacity = "1";
-  // console.log("Скрипт загружен, скролл заблокирован");
-
-  // РЫЧАГИ
-  const levers = document.querySelectorAll(".lever_button");
-  function getCurrentAngle(element) {
-    const transform = window.getComputedStyle(element).transform;
-    if (transform === "none") return 0;
-
-    const values = transform.split("(")[1].split(")")[0].split(",");
-    const a = values[0];
-    const b = values[1];
-    const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
-    return angle;
-  }
-
-  levers.forEach((lever, index) => {
-    let currentAngle = getCurrentAngle(lever);
-
-    lever.addEventListener("click", function () {
-      currentAngle = (currentAngle + 45) % 360;
-      this.style.transform = `rotate(${currentAngle}deg)`;
-    });
-  });
 });

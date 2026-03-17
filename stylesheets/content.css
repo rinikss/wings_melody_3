@@ -495,6 +495,7 @@ button {
   min-height: 100vh;
 }
 
+/* ===== ЭЛЛИПСЫ ===== */
 .elips_1 {
   width: 33vw;
   height: 33vw;
@@ -525,6 +526,7 @@ button {
   margin-top: 5.3vw;
   animation: pulseSmall 3s ease-in-out infinite;
 }
+
 .circle-group {
   position: absolute;
 }
@@ -533,10 +535,12 @@ button {
   margin-top: -35vw;
   margin-left: -8vw;
 }
+
 .group-3 {
   margin-top: -30vw;
   margin-left: -15vw;
 }
+
 .elips_1.small {
   width: 15vw;
   height: 15vw;
@@ -555,6 +559,7 @@ button {
   margin-left: 2vw;
   margin-top: 2vw;
 }
+
 .elips_1.smaller {
   width: 8.6vw;
   height: 8.6vw;
@@ -573,6 +578,8 @@ button {
   margin-left: 1.5vw;
   margin-top: 1.5vw;
 }
+
+/* ===== АНИМАЦИИ ===== */
 @keyframes pulseBig {
   0%,
   100% {
@@ -598,6 +605,7 @@ button {
     transform: scale(0.95);
   }
 }
+
 @keyframes pulseSmall {
   0%,
   100% {
@@ -610,16 +618,6 @@ button {
     transform: scale(0.9);
   }
 }
-
-/* .sp_img {
-  width: 38.8vw;
-  height: 44vw;
-}
-
-.lp_img {
-  width: 53vw;
-  height: 52vw;
-} */
 
 @keyframes floatSoundpad {
   0%,
@@ -657,34 +655,39 @@ button {
   }
 }
 
+/* ===== ОСНОВНЫЕ ЭЛЕМЕНТЫ ===== */
 .soundpad {
   position: absolute;
   width: 38.8vw;
   height: 40.9vw;
-  margin-left: 12vw;
-  margin-top: -32vw;
+  left: 12vw;
+  top: 10vw;
   animation: floatSoundpad 5s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .laptop {
   position: absolute;
   width: 40.4vw;
   height: 35vw;
-  margin-left: 41vw;
-  margin-top: -20vw;
+  left: 41vw;
+  top: 20vw;
   animation: floatLaptop 6s ease-in-out infinite;
+  z-index: 10;
 }
 
 .wires {
   position: absolute;
   width: 50vw;
   height: 46.5vw;
-  margin-top: -32vw;
-  margin-left: 5vw;
+  left: 5vw;
+  top: 5vw;
   animation: floatWires 7s ease-in-out infinite;
+  z-index: 5;
 }
 
-/* окошко с правилами для пульта */
+/* ===== ОКОШКО С ПРАВИЛАМИ ===== */
 .soundpad_popup {
   position: absolute;
   left: 5vw;
@@ -702,7 +705,6 @@ button {
   animation: slideFromLeft 0.4s ease;
 }
 
-/* размеры для каждой птицы */
 .soundpad_popup[data-bird="1"] {
   width: 29.5vw;
   height: 13.4vw;
@@ -710,11 +712,11 @@ button {
 
 .soundpad_popup[data-bird="2"] {
   width: 29.5vw;
-  height: 15vw; /* высота для 2 птицы */
+  height: 15vw;
 }
 
 .soundpad_popup[data-bird="3"] {
-  width: 36.5vw; /* ширина для 3 птицы */
+  width: 36.5vw;
   height: 13.8vw;
 }
 
@@ -722,7 +724,6 @@ button {
   display: flex;
 }
 
-/* контейнер для содержимого */
 .soundpad_content {
   display: flex;
   align-items: center;
@@ -731,7 +732,6 @@ button {
   height: 100%;
 }
 
-/* контейнер для текста с изменяемыми размерами */
 .soundpad_text_container {
   background: transparent;
   display: flex;
@@ -753,7 +753,6 @@ button {
   height: 8.5vw;
 }
 
-/* текст внутри окошка */
 .soundpad_text {
   font-family: "Inter", sans-serif;
   font-size: 1.3vw;
@@ -763,7 +762,6 @@ button {
   font-weight: 500;
 }
 
-/* картинка птички */
 .soundpad_bird {
   width: 15vw;
   height: 15vw;
@@ -771,7 +769,6 @@ button {
   flex-shrink: 0;
 }
 
-/* кнопка закрытия */
 .soundpad_close {
   position: absolute;
   bottom: -3vw;
@@ -811,21 +808,8 @@ button {
     opacity: 1;
   }
 }
-.reflected {
-  transform: rotate(180deg);
-}
-.reflected-1 {
-  margin-left: -15vw;
-}
-.reflected-2 {
-  margin-left: 12vw;
-  margin-top: 18vw;
-}
-.reflected-3 {
-  margin-left: 25vw;
-  margin-top: 18vw;
-}
 
+/* ===== ПОПАП ПУЛЬТА ===== */
 .pult_popup {
   position: fixed;
   top: 50%;
@@ -868,7 +852,19 @@ button {
   align-items: center;
 }
 
-/* Кнопка закрытия */
+/* картинка пульта */
+.pult_body {
+  position: absolute;
+  width: 61.8vw;
+  height: 33vw;
+  object-fit: contain;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* кнопка закрытия */
 .pult_close {
   position: absolute;
   top: -1.5vw;
@@ -899,17 +895,7 @@ button {
   transform: scale(0.95);
 }
 
-.pult_body {
-  position: absolute;
-  width: 61.8vw;
-  height: 33vw;
-  object-fit: contain;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
+/* ===== ПИАНИНО ===== */
 .piano_container {
   position: absolute;
   width: 53.5vw;
@@ -946,21 +932,11 @@ button {
 .first_key {
   margin-left: 0;
 }
-
 .last_key {
   margin-right: 0;
 }
 
-.piano_upper_keys {
-  position: absolute;
-  top: -1.5vw;
-  left: 0;
-  width: 100%;
-  height: 9.3vw;
-  z-index: 3;
-  pointer-events: none;
-}
-
+/* ОБЪЕДИНЕННЫЙ СЕЛЕКТОР для верхних клавиш */
 .piano_upper_keys {
   position: absolute;
   top: 0.2vw;
@@ -1025,6 +1001,17 @@ button {
   filter: brightness(0.9);
 }
 
+.piano_key:hover {
+  transform: translateY(-0.3vw);
+  filter: brightness(1.1);
+}
+
+.piano_key:active {
+  transform: translateY(0.2vw);
+  filter: brightness(0.9);
+}
+
+/* ===== СВЕТЯЩИЕСЯ КНОПКИ ===== */
 .glow_button {
   position: absolute;
   width: 16.5vw;
@@ -1048,7 +1035,6 @@ button {
   left: 19vw;
   top: 0vw;
 }
-
 .btn_4 {
   left: 3vw;
   top: 8vw;
@@ -1070,6 +1056,20 @@ button {
 .glow_button:active {
   transform: scale(0.95);
 }
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  }
+}
+
+/* РЫЧАЖКИ  */
 .lever_button {
   position: absolute;
   width: 2.5vw;
@@ -1116,6 +1116,7 @@ button {
   transform: scale(1.05);
 }
 
+/* ПРОСТЫЕ КНОПКИ */
 .simple_button {
   position: absolute;
   width: 3.9vw;
@@ -1130,33 +1131,27 @@ button {
   left: 33vw;
   top: 14vw;
 }
-
 .simple_2 {
   left: 38vw;
   top: 14vw;
 }
-
 .simple_3 {
   left: 43vw;
   top: 14vw;
 }
-
 .simple_4 {
   left: 33vw;
   top: 17.5vw;
 }
-
 .simple_5 {
   left: 38vw;
   top: 17.5vw;
 }
-
 .simple_6 {
   left: 43vw;
   top: 17.5vw;
 }
 
-/* Эффекты */
 .simple_button:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
@@ -1165,4 +1160,82 @@ button {
 .simple_button:active {
   transform: scale(0.95);
   filter: brightness(0.9);
+}
+
+/* ПОЛЗУНКИ */
+.sliders_container {
+  position: absolute;
+  left: 50vw;
+  top: 0;
+  z-index: 10;
+}
+
+.slider_wrapper {
+  position: relative;
+  width: 0.56vw;
+  height: 13.47vw;
+  margin-bottom: 1vw;
+}
+
+.slider_stroke {
+  position: absolute;
+  width: 0.56vw;
+  height: 13.47vw;
+  object-fit: contain;
+  left: 0;
+  top: 0;
+}
+
+.slider_thumb {
+  position: absolute;
+  width: 1.53vw;
+  height: 4.17vw;
+  object-fit: contain;
+  cursor: grab;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  transition: top 0.05s ease;
+  z-index: 11;
+}
+
+.slider_thumb:active {
+  cursor: grabbing;
+}
+
+.slider_1 {
+  left: 0vw;
+  top: 20vw;
+}
+.slider_2 {
+  left: 3vw;
+  top: 6.5vw;
+}
+.slider_3 {
+  left: 6vw;
+  top: -7vw;
+}
+.slider_4 {
+  left: 9vw;
+  top: -20.5vw;
+}
+.slider_5 {
+  left: 12vw;
+  top: -33.9vw;
+}
+
+/* ОТРАЖЕНИЯ */
+.reflected {
+  transform: rotate(180deg);
+}
+.reflected-1 {
+  margin-left: -15vw;
+}
+.reflected-2 {
+  margin-left: 12vw;
+  margin-top: 18vw;
+}
+.reflected-3 {
+  margin-left: 25vw;
+  margin-top: 18vw;
 }
