@@ -490,18 +490,20 @@ button {
 
 /* ЭКРАН 3 */
 .block3 {
-  position: relative;
+  position: absolute;
   width: 100%;
-  min-height: 100vh;
+  height: 86vw;
+  overflow-x: hidden;
 }
 
-/* ===== ЭЛЛИПСЫ ===== */
+/* ЭЛЛИПСЫ */
 .elips_1 {
   width: 33vw;
   height: 33vw;
   border-radius: 100%;
   background-color: #7083ff;
   margin-left: 83vw;
+  margin-top: 1vw;
   animation: pulseBig 3s ease-in-out infinite;
 }
 
@@ -579,7 +581,7 @@ button {
   margin-top: 1.5vw;
 }
 
-/* ===== АНИМАЦИИ ===== */
+/* АНИМАЦИИ */
 @keyframes pulseBig {
   0%,
   100% {
@@ -648,20 +650,20 @@ button {
     transform: translateY(0px) rotate(0deg);
   }
   33% {
-    transform: translateY(-10px) rotate(-2deg);
+    transform: translateY(-5px) rotate(-1deg);
   }
   66% {
-    transform: translateY(10px) rotate(2deg);
+    transform: translateY(5px) rotate(1deg);
   }
 }
 
-/* ===== ОСНОВНЫЕ ЭЛЕМЕНТЫ ===== */
+/* ОСНОВНЫЕ ЭЛЕМЕНТЫ */
 .soundpad {
   position: absolute;
   width: 38.8vw;
   height: 40.9vw;
   left: 12vw;
-  top: 10vw;
+  top: 5vw;
   animation: floatSoundpad 5s ease-in-out infinite;
   cursor: pointer;
   z-index: 10;
@@ -671,7 +673,7 @@ button {
   position: absolute;
   width: 40.4vw;
   height: 35vw;
-  left: 41vw;
+  left: 43vw;
   top: 20vw;
   animation: floatLaptop 6s ease-in-out infinite;
   z-index: 10;
@@ -681,13 +683,13 @@ button {
   position: absolute;
   width: 50vw;
   height: 46.5vw;
-  left: 5vw;
+  left: 7vw;
   top: 5vw;
   animation: floatWires 7s ease-in-out infinite;
   z-index: 5;
 }
 
-/* ===== ОКОШКО С ПРАВИЛАМИ ===== */
+/* ОКОШКО С ПРАВИЛАМИ */
 .soundpad_popup {
   position: absolute;
   left: 5vw;
@@ -809,7 +811,7 @@ button {
   }
 }
 
-/* ===== ПОПАП ПУЛЬТА ===== */
+/* ПОПАП ПУЛЬТА */
 .pult_popup {
   position: fixed;
   top: 50%;
@@ -895,7 +897,7 @@ button {
   transform: scale(0.95);
 }
 
-/* ===== ПИАНИНО ===== */
+/* ПИАНИНО */
 .piano_container {
   position: absolute;
   width: 53.5vw;
@@ -1011,7 +1013,7 @@ button {
   filter: brightness(0.9);
 }
 
-/* ===== СВЕТЯЩИЕСЯ КНОПКИ ===== */
+/* СВЕТЯЩИЕСЯ КНОПКИ */
 .glow_button {
   position: absolute;
   width: 16.5vw;
@@ -1172,15 +1174,15 @@ button {
 
 .slider_wrapper {
   position: relative;
-  width: 0.56vw;
-  height: 13.47vw;
+  width: 0.6vw;
+  height: 13.4vw;
   margin-bottom: 1vw;
 }
 
 .slider_stroke {
   position: absolute;
-  width: 0.56vw;
-  height: 13.47vw;
+  width: 0.6vw;
+  height: 13vw;
   object-fit: contain;
   left: 0;
   top: 0;
@@ -1188,8 +1190,8 @@ button {
 
 .slider_thumb {
   position: absolute;
-  width: 1.53vw;
-  height: 4.17vw;
+  width: 1.5vw;
+  height: 4vw;
   object-fit: contain;
   cursor: grab;
   left: 50%;
@@ -1205,26 +1207,25 @@ button {
 
 .slider_1 {
   left: 0vw;
-  top: 20vw;
+  top: 6vw;
 }
 .slider_2 {
   left: 3vw;
-  top: 6.5vw;
+  top: -8.4vw;
 }
 .slider_3 {
   left: 6vw;
-  top: -7vw;
+  top: -22.8vw;
 }
 .slider_4 {
   left: 9vw;
-  top: -20.5vw;
+  top: -37.2vw;
 }
 .slider_5 {
   left: 12vw;
-  top: -33.9vw;
+  top: -51.6vw;
 }
 
-/* ОТРАЖЕНИЯ */
 .reflected {
   transform: rotate(180deg);
 }
@@ -1238,4 +1239,10 @@ button {
 .reflected-3 {
   margin-left: 25vw;
   margin-top: 18vw;
+}
+
+.pult_close {
+  z-index: 10001;
+  pointer-events: auto;
+  cursor: pointer;
 }

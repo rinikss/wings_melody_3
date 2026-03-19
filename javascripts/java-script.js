@@ -459,41 +459,144 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ЗАКРЫТИЕ ПОПАПОВ
-  document.addEventListener("click", (e) => {
-    if (
-      rulesPopup?.classList.contains("show") &&
-      !rulesPopup.contains(e.target) &&
-      e.target !== closeRules
-    ) {
-      rulesPopup.classList.remove("show");
-    }
-    if (
-      soundpadPopup?.classList.contains("show") &&
-      !soundpadPopup.contains(e.target) &&
-      e.target !== closeSoundpad
-    ) {
-      soundpadPopup.classList.remove("show");
-    }
-    if (
-      pultPopup?.classList.contains("show") &&
-      !pultPopup.contains(e.target) &&
-      e.target !== closePult
-    ) {
+
+  function closeAllPopups() {
+    if (rulesPopup) rulesPopup.classList.remove("show");
+    if (soundpadPopup) soundpadPopup.classList.remove("show");
+    if (pultPopup) {
       pultPopup.classList.remove("show");
       toggleScroll(false);
     }
-  });
+  }
 
-  if (closeRules)
-    closeRules.addEventListener("click", () =>
-      rulesPopup?.classList.remove("show"),
-    );
-  if (closeSoundpad)
-    closeSoundpad.addEventListener("click", () =>
-      soundpadPopup?.classList.remove("show"),
-    );
+  if (closeRules) {
+    closeRules.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      rulesPopup?.classList.remove("show");
+    });
+  }
+
+  if (closeSoundpad) {
+    closeSoundpad.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      soundpadPopup?.classList.remove("show");
+    });
+  }
+
+  if (closePult) {
+    closePult.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (pultPopup) {
+        pultPopup.classList.remove("show");
+        toggleScroll(false);
+        console.log("Попап пульта закрыт по кнопке");
+      }
+    });
+  }
+  // ЗАКРЫТИЕ ПУЛЬТА
+  if (closePult) {
+    closePult.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const pultPopup = document.getElementById("pultPopup");
+      if (pultPopup) {
+        pultPopup.classList.remove("show");
+        pultPopup.style.display = "none";
+
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+
+        console.log("Попап пульта закрыт");
+      }
+    });
+  }
 
   //  ИНИЦИАЛИЗАЦИЯ
   changeAllElements(0);
   birdImage.style.opacity = "1";
+
+  //ПОЛЗУНКИ
+  function initSliders() {
+    const sliders = document.querySelectorAll(".slider_thumb");
+
+    sliders.forEach((slider) => {
+      const newSlider = slider.cloneNode(true);
+      slider.parentNode.replaceChild(newSlider, slider);
+    });
+
+    document.querySelectorAll(".slider_thumb").forEach((slider) => {
+      let isDragging = false;
+      let startY = 0;
+      let currentTop = 0;
+      const wrapper = slider.closest(".slider_wrapper");
+      const minTop = 0; // верхняя граница
+      const maxTop = wrapper.clientHeight - slider.clientHeight; // нижняя граница
+
+      const randomPosition = Math.random() * maxTop;
+      slider.style.top = randomPosition + "px";
+
+      slider.addEventListener("mousedown", startDrag);
+
+      function startDrag(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        isDragging = true;
+        startY = e.clientY;
+        currentTop = parseFloat(slider.style.top) || 0;
+
+        slider.style.cursor = "grabbing";
+        slider.style.transition = "none";
+
+        document.addEventListener("mousemove", onDrag);
+        document.addEventListener("mouseup", stopDrag);
+      }
+
+      function onDrag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const deltaY = e.clientY - startY;
+        let newTop = currentTop + deltaY;
+
+        newTop = Math.max(minTop, Math.min(newTop, maxTop));
+
+        slider.style.top = newTop + "px";
+      }
+
+      function stopDrag() {
+        if (!isDragging) return;
+
+        isDragging = false;
+        slider.style.cursor = "grab";
+        slider.style.transition = "top 0.05s ease";
+
+        document.removeEventListener("mousemove", onDrag);
+        document.removeEventListener("mouseup", stopDrag);
+
+        console.log("Ползунок остановлен на позиции:", slider.style.top);
+      }
+    });
+  }
+
+  initSliders();
+
+  if (soundpad) {
+    soundpad.addEventListener("click", function () {
+      if (isConfirmed) {
+        const pultPopup = document.getElementById("pultPopup");
+        if (pultPopup) {
+          pultPopup.style.display = "flex";
+          pultPopup.classList.add("show");
+          toggleScroll(true);
+
+          setTimeout(initSliders, 100);
+        }
+      }
+    });
+  }
 });
