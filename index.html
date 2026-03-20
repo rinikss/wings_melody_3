@@ -456,12 +456,6 @@
                 class="piano_upper_key"
                 data-key="11"
               />
-              <img
-                src="./images/up_key.svg"
-                alt="верхняя клавиша"
-                class="piano_upper_key"
-                data-key="12"
-              />
             </div>
 
             <div class="piano_lower_keys">
@@ -571,8 +565,45 @@
           </div>
         </div>
       </div>
+      <!-- попап с правилами для ноутбука -->
+      <div class="laptop_popup" id="laptopPopup">
+        <div class="laptop_content">
+          <img
+            src="./images/bird1mini.svg"
+            alt="птичка"
+            class="laptop_bird"
+            id="laptopBird"
+          />
+          <p class="laptop_text" id="laptopText">
+            А теперь кликни на ноутбук. Там твои звуки. Сведи их в трек. Когда
+            закончишь, жми «Свести». Не бойся, это цифра — всё лечится
+            перезагрузкой.
+          </p>
+          <button class="laptop_close" id="closeLaptop">Понятно</button>
+        </div>
+      </div>
+      <!-- попап для ноутбука -->
+      <div class="laptop_big_popup" id="laptopBigPopup">
+        <div class="laptop_big_container">
+          >
+          <button class="laptop_big_close" id="closeLaptopBig">×</button>
+
+          <img
+            src="./images/laptop_popup.svg"
+            alt="ноутбук"
+            class="laptop_big_bg"
+            id="laptopBigBg"
+          />
+
+          <div class="laptop_big_content" id="laptopBigContent"></div>
+        </div>
+      </div>
     </section>
 
-    <section class="block4"></section>
+    <section class="block4" id="block4">
+      <div class="for_game3">
+        <div class="field" id="GameField"></div>
+      </div>
+    </section>
   </body>
 </html>

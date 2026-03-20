@@ -490,7 +490,7 @@ button {
 
 /* ЭКРАН 3 */
 .block3 {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 86vw;
   overflow-x: hidden;
@@ -668,7 +668,10 @@ button {
   cursor: pointer;
   z-index: 10;
 }
-
+.sp_img {
+  width: 38.8vw;
+  height: 40.9vw;
+}
 .laptop {
   position: absolute;
   width: 40.4vw;
@@ -678,7 +681,10 @@ button {
   animation: floatLaptop 6s ease-in-out infinite;
   z-index: 10;
 }
-
+.lp_img {
+  width: 50vw;
+  height: 45vw;
+}
 .wires {
   position: absolute;
   width: 50vw;
@@ -831,7 +837,9 @@ button {
 }
 
 .pult_popup.show {
-  display: flex;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @keyframes popupAppear {
@@ -1246,3 +1254,185 @@ button {
   pointer-events: auto;
   cursor: pointer;
 }
+
+/* попап с правилами для ноутбука */
+.laptop_popup {
+  position: absolute;
+  right: 3vw;
+  top: 15%;
+  width: 33vw;
+  height: 14.7vw;
+  background: #ffdb70;
+  border-radius: 37px;
+  padding: 1.5vw 2vw;
+  display: none;
+  align-items: center;
+  gap: 1.5vw;
+  z-index: 150;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideFromRight 0.4s ease;
+}
+
+.laptop_popup.show {
+  display: flex;
+}
+
+.laptop_content {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  width: 100%;
+  height: 100%;
+}
+
+.laptop_bird {
+  width: 15vw;
+  height: 15vw;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.laptop_text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.3vw;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  flex: 1;
+  font-weight: 500;
+}
+
+.laptop_close {
+  position: absolute;
+  bottom: -3vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 3vw;
+  padding: 0.8vw 2vw;
+  font-family: "Inter", sans-serif;
+  font-size: 1vw;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  z-index: 151;
+}
+
+.laptop_close:hover {
+  background: #f0f0f0;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.laptop_close:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+@keyframes slideFromRight {
+  0% {
+    right: -10vw;
+    opacity: 0;
+  }
+  100% {
+    right: 3vw;
+    opacity: 1;
+  }
+}
+
+/* БОЛЬШОЙ ПОПАП НОУТБУКА */
+.laptop_big_popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56vw;
+  height: 52vw;
+  background-color: #12101c;
+  border: 1vw solid white;
+  border-radius: 2.1vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: popupAppear 0.3s ease;
+}
+
+.laptop_big_popup.show {
+  display: flex;
+}
+
+.laptop_big_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ноутбук */
+.laptop_big_bg {
+  position: absolute;
+  width: 50vw;
+  height: 43vw;
+  object-fit: contain;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* контент внутри попапа */
+/* .laptop_big_content {
+  
+} */
+
+/* кнопка закрытия */
+.laptop_big_close {
+  position: absolute;
+  top: -1.5vw;
+  right: -1.5vw;
+  width: 3.5vw;
+  height: 3.5vw;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.5vw;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.laptop_big_close:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.laptop_big_close:active {
+  transform: scale(0.95);
+}
+
+/* .block4 {
+  position: relative;
+  width: 100%;
+  height: 66vw;
+  overflow-x: hidden;
+  margin-top: -5vw;
+}
+.field {
+  width: 48vw;
+  height: 54vw;
+  background-color: #ffff;
+  border-radius: 4vw;
+  box-shadow: inset;
+} */

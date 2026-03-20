@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       simple_btn: "./images/simpl_bttn.svg",
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider.svg",
+      laptop_bg: "./images/laptop_popup.svg",
     },
     {
       image: "./images/bird2.svg",
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       simple_btn: "./images/simpl_bttn2.svg",
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider_2.svg",
+      laptop_bg: "./images/laptop_popup2.svg",
     },
     {
       image: "./images/bird3.svg",
@@ -78,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
       simple_btn: "./images/simpl_bttn2.svg",
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider_3.svg",
+      laptop_bg: "./images/laptop_popup3.svg",
     },
   ];
 
@@ -99,7 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
     "./images/bird2mini.svg",
     "./images/bird3mini.svg",
   ];
-
+  // Тексты для попапа ноутбука
+  const laptopTexts = [
+    "А теперь кликни на ноутбук. Там твои звуки. Сведи их в трек. Когда закончишь, жми «Свести». Не бойся, это цифра — всё лечится перезагрузкой.",
+    "А теперь кликни на ноутбук. Здесь твои звуки оживают. Когда почувствуешь, что пора — жми «Свести в трек». Это твой момент.",
+    "А теперь сюда. Твои звуки уже на дорожках. Сведи их в трек. Если сделаешь хорошо — будет хит. Если нет — будет опыт. Жми «Свести»!",
+  ];
   // ЭЛЕМЕНТЫ
   // первый экран
   const birdImage = document.getElementById("birdImage");
@@ -132,6 +140,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pultPopup = document.getElementById("pultPopup");
   const closePult = document.getElementById("closePult");
+  // элементы попапа ноутбука
+  const laptopPopup = document.getElementById("laptopPopup");
+  const laptopBird = document.getElementById("laptopBird");
+  const laptopText = document.getElementById("laptopText");
+  const closeLaptop = document.getElementById("closeLaptop");
+  // элементы большого попапа ноутбука
+  const laptopBigPopup = document.getElementById("laptopBigPopup");
+  const laptopBigBg = document.getElementById("laptopBigBg");
+  const laptopBigContent = document.getElementById("laptopBigContent");
+  const closeLaptopBig = document.getElementById("closeLaptopBig");
 
   // третий экран
   const soundpad = document.getElementById("SoundPad");
@@ -201,6 +219,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (soundpadText) soundpadText.textContent = soundpadTexts[index];
     if (soundpadPopup) soundpadPopup.setAttribute("data-bird", bird.size);
 
+    if (laptopBird) laptopBird.src = birdMiniImages[index];
+    if (laptopText) laptopText.textContent = laptopTexts[index];
+
+    if (laptopBigPopup) {
+      laptopBigPopup.style.backgroundColor = bird.popup_color;
+    }
+    if (laptopBigBg) {
+      laptopBigBg.src = bird.laptop_bg;
+    }
     // цвета эллипсов
     document.querySelectorAll(".elips_1, .elips_2, .elips_3").forEach((el) => {
       if (el.classList.contains("elips_1"))
@@ -400,22 +427,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // ОТКРЫТИЕ ПУЛЬТА
+  // ========== ОТКРЫТИЕ ПУЛЬТА ==========
   if (soundpad) {
     soundpad.style.cursor = "pointer";
     soundpad.addEventListener("click", function () {
       if (isConfirmed) {
         const pultPopup = document.getElementById("pultPopup");
         if (pultPopup) {
-          pultPopup.style.display = "flex";
-          pultPopup.style.zIndex = "9999";
-          pultPopup.style.opacity = "1";
-          pultPopup.style.visibility = "visible";
+          // Убираем все возможные скрывающие классы
+          pultPopup.classList.remove("hide", "closed");
+
+          // Добавляем класс show
           pultPopup.classList.add("show");
 
+          // Принудительно устанавливаем стили
+          pultPopup.style.display = "flex";
+          pultPopup.style.opacity = "1";
+          pultPopup.style.visibility = "visible";
+
+          // Анимация появится из CSS
           toggleScroll(true);
 
-          console.log("Попап с пультом открыт", pultPopup);
+          console.log("Попап с пультом открыт");
+          console.log("Стили:", {
+            display: getComputedStyle(pultPopup).display,
+            opacity: getComputedStyle(pultPopup).opacity,
+            classList: pultPopup.classList.toString(),
+          });
         } else {
           console.log("Элемент pultPopup не найден в HTML");
         }
@@ -424,8 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  // СКРОЛЛ
+  // ========== СКРОЛЛ ==========
   window.addEventListener("scroll", () => {
     const block2 = document.getElementById("block2");
     const block3 = document.getElementById("block3");
@@ -460,15 +497,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ЗАКРЫТИЕ ПОПАПОВ
 
+  // Функция закрытия всех попапов
   function closeAllPopups() {
     if (rulesPopup) rulesPopup.classList.remove("show");
     if (soundpadPopup) soundpadPopup.classList.remove("show");
     if (pultPopup) {
       pultPopup.classList.remove("show");
+      pultPopup.style.display = "none";
       toggleScroll(false);
     }
+    if (laptopPopup) laptopPopup.classList.remove("show");
   }
 
+  // Закрытие по кнопкам
   if (closeRules) {
     closeRules.addEventListener("click", (e) => {
       e.preventDefault();
@@ -489,32 +530,63 @@ document.addEventListener("DOMContentLoaded", function () {
     closePult.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (pultPopup) {
-        pultPopup.classList.remove("show");
-        toggleScroll(false);
-        console.log("Попап пульта закрыт по кнопке");
-      }
-    });
-  }
-  // ЗАКРЫТИЕ ПУЛЬТА
-  if (closePult) {
-    closePult.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
 
-      const pultPopup = document.getElementById("pultPopup");
       if (pultPopup) {
         pultPopup.classList.remove("show");
         pultPopup.style.display = "none";
+        toggleScroll(false);
+        console.log("Попап пульта закрыт по кнопке");
 
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-
-        console.log("Попап пульта закрыт");
+        setTimeout(() => {
+          if (laptopPopup) {
+            laptopPopup.classList.add("show");
+            console.log("Попап с ноутбуком показан");
+          }
+        }, 300);
       }
     });
   }
 
+  if (closeLaptop) {
+    closeLaptop.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      laptopPopup?.classList.remove("show");
+    });
+  }
+  //  ОТКРЫТИЕ БОЛЬШОГО ПОПАПА НОУТБУКА
+  if (laptop) {
+    laptop.style.cursor = "pointer";
+    laptop.addEventListener("click", function () {
+      if (isConfirmed) {
+        const laptopBigPopup = document.getElementById("laptopBigPopup");
+        if (laptopBigPopup) {
+          laptopBigPopup.classList.add("show");
+          laptopBigPopup.style.display = "flex";
+          laptopBigPopup.style.opacity = "1";
+          laptopBigPopup.style.visibility = "visible";
+          toggleScroll(true);
+          console.log("Большой попап ноутбука открыт");
+        }
+      } else {
+        alert("Сначала выбери персонажа!");
+      }
+    });
+  }
+  if (closeLaptopBig) {
+    closeLaptopBig.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const laptopBigPopup = document.getElementById("laptopBigPopup");
+      if (laptopBigPopup) {
+        laptopBigPopup.classList.remove("show");
+        laptopBigPopup.style.display = "none";
+        toggleScroll(false);
+        console.log("Большой попап ноутбука закрыт");
+      }
+    });
+  }
   //  ИНИЦИАЛИЗАЦИЯ
   changeAllElements(0);
   birdImage.style.opacity = "1";
