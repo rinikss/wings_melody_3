@@ -1386,11 +1386,6 @@ button {
   transform: translate(-50%, -50%);
 }
 
-/* контент внутри попапа */
-/* .laptop_big_content {
-  
-} */
-
 /* кнопка закрытия */
 .laptop_big_close {
   position: absolute;
@@ -1421,7 +1416,27 @@ button {
 .laptop_big_close:active {
   transform: scale(0.95);
 }
+.laptop_big_content {
+  position: relative;
+  margin-top: -31vw;
+  margin-left: -1vw;
+  width: 33vw;
+  height: 7vw;
+  border-radius: 2.5vw;
+  background-color: #b2a3ff;
+  z-index: 2002;
+}
 
+/* .wave_bar {
+  position: relative;
+  margin-top: 2.3vw;
+  margin-left: 0.7vw;
+  width: 0.4vw;
+  height: 2.63vw;
+  border-radius: 7.6vw;
+  background-color: #5d03cb;
+  z-index: 2003;
+} */
 /* .block4 {
   position: relative;
   width: 100%;
