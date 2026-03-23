@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider.svg",
       laptop_bg: "./images/laptop_popup.svg",
+      disk_fg: "./images/disk_fg.svg",
+      note1_fg: "./images/note1_fg.svg",
+      note2_fg: "./images/note2_fg.svg",
+      headphones_fg: "./images/hdphones_fg.svg",
     },
     {
       image: "./images/bird2.svg",
@@ -54,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider_2.svg",
       laptop_bg: "./images/laptop_popup2.svg",
+      disk_fg: "./images/disk_fg2.svg",
+      note1_fg: "./images/note11_fg.svg",
+      note2_fg: "./images/note22_fg.svg",
+      headphones_fg: "./images/hdphones_fg2.svg",
     },
     {
       image: "./images/bird3.svg",
@@ -81,6 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
       slider_stroke: "./images/stroke.svg",
       slider_thumb: "./images/slider_3.svg",
       laptop_bg: "./images/laptop_popup3.svg",
+      disk_fg: "./images/disk_fg3.svg",
+      note1_fg: "./images/note111_fg.svg",
+      note2_fg: "./images/note222_fg.svg",
+      headphones_fg: "./images/hdphones_fg3.svg",
     },
   ];
 
@@ -107,6 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
     "А теперь кликни на ноутбук. Там твои звуки. Сведи их в трек. Когда закончишь, жми «Свести». Не бойся, это цифра — всё лечится перезагрузкой.",
     "А теперь кликни на ноутбук. Здесь твои звуки оживают. Когда почувствуешь, что пора — жми «Свести в трек». Это твой момент.",
     "А теперь сюда. Твои звуки уже на дорожках. Сведи их в трек. Если сделаешь хорошо — будет хит. Если нет — будет опыт. Жми «Свести»!",
+  ];
+
+  // Тексты для игры на 4 экране
+  const gameTexts = [
+    "Сверху падают пластинки, ноты и наушники. Тебе нужно поймать 5 виниловых пластинок. Кликай только по ним. Если кликнешь по ноте — пластинка исчезнет. Готов? Лови!",
+    "Смотри, сверху падают пластинки, ноты и наушники. Нам нужно поймать 5 виниловых пластинок. Кликай только по ним. Если кликнешь по ноте, то пластинка исчезнет. Ты справишься, я рядом!",
+    "Сверху падает всякие штуки: ноты, наушники, пластинки. Нас интересует только винил. Поймай 5 штук. Кликнешь по ноте и пластинка улетит. Внимание, реакция, собранность. Погнали.",
   ];
   // ЭЛЕМЕНТЫ
   // первый экран
@@ -156,6 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const laptop = document.getElementById("LapTop");
   const wires = document.getElementById("wires");
 
+  // Элементы 4 экрана
+  const gamePopupBird = document.getElementById("gamePopupBird");
+  const gamePopupText = document.getElementById("gamePopupText");
   // ПЕРЕМЕННЫЕ
   let currentBird = 0;
   let isConfirmed = false;
@@ -228,6 +250,40 @@ document.addEventListener("DOMContentLoaded", function () {
     if (laptopBigBg) {
       laptopBigBg.src = bird.laptop_bg;
     }
+    // ЧЕТВЕРТЫЙ ЭКРАН (игра)
+    if (gamePopupBird) gamePopupBird.src = birdMiniImages[index];
+    if (gamePopupText) gamePopupText.textContent = gameTexts[index];
+    currentItemTypes = [
+      {
+        type: "disk",
+        image: bird.disk_fg,
+        width: "8.13vw",
+        height: "8.13vw",
+        points: 1,
+      },
+      {
+        type: "note1",
+        image: bird.note1_fg,
+        width: "9.17vw",
+        height: "10.56vw",
+        points: 0,
+      },
+      {
+        type: "note2",
+        image: bird.note2_fg,
+        width: "7.43vw",
+        height: "11.18vw",
+        points: 0,
+      },
+      {
+        type: "headphones",
+        image: bird.headphones_fg,
+        width: "11.94vw",
+        height: "10.0vw",
+        points: 0,
+      },
+    ];
+
     // цвета эллипсов
     document.querySelectorAll(".elips_1, .elips_2, .elips_3").forEach((el) => {
       if (el.classList.contains("elips_1"))
@@ -404,6 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isConfirmed) {
       currentBird = (currentBird - 1 + birds.length) % birds.length;
       changeBird(currentBird);
+      updateGameForNewBird();
     }
   };
 
@@ -412,6 +469,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isConfirmed) {
       currentBird = (currentBird + 1) % birds.length;
       changeBird(currentBird);
+      updateGameForNewBird();
     }
   };
 
@@ -427,25 +485,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // ========== ОТКРЫТИЕ ПУЛЬТА ==========
+  // ОТКРЫТИЕ ПУЛЬТА
   if (soundpad) {
     soundpad.style.cursor = "pointer";
     soundpad.addEventListener("click", function () {
       if (isConfirmed) {
         const pultPopup = document.getElementById("pultPopup");
         if (pultPopup) {
-          // Убираем все возможные скрывающие классы
           pultPopup.classList.remove("hide", "closed");
 
-          // Добавляем класс show
           pultPopup.classList.add("show");
 
-          // Принудительно устанавливаем стили
           pultPopup.style.display = "flex";
           pultPopup.style.opacity = "1";
           pultPopup.style.visibility = "visible";
 
-          // Анимация появится из CSS
           toggleScroll(true);
 
           console.log("Попап с пультом открыт");
@@ -462,7 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  // ========== СКРОЛЛ ==========
+  //  СКРОЛЛ
   window.addEventListener("scroll", () => {
     const block2 = document.getElementById("block2");
     const block3 = document.getElementById("block3");
@@ -496,8 +550,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ЗАКРЫТИЕ ПОПАПОВ
-
-  // Функция закрытия всех попапов
   function closeAllPopups() {
     if (rulesPopup) rulesPopup.classList.remove("show");
     if (soundpadPopup) soundpadPopup.classList.remove("show");
@@ -509,7 +561,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (laptopPopup) laptopPopup.classList.remove("show");
   }
 
-  // Закрытие по кнопкам
   if (closeRules) {
     closeRules.addEventListener("click", (e) => {
       e.preventDefault();
@@ -605,8 +656,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let startY = 0;
       let currentTop = 0;
       const wrapper = slider.closest(".slider_wrapper");
-      const minTop = 0; // верхняя граница
-      const maxTop = wrapper.clientHeight - slider.clientHeight; // нижняя граница
+      const minTop = 0;
+      const maxTop = wrapper.clientHeight - slider.clientHeight;
 
       const randomPosition = Math.random() * maxTop;
       slider.style.top = randomPosition + "px";
@@ -671,4 +722,217 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  //ИГРА НА 4 ЭКРАНЕ
+  // элементы
+  const targetCounter = document.getElementById("targetCounter");
+  const gameField = document.getElementById("gameField");
+  const targetImage = document.getElementById("targetImage");
+
+  // переменные игры
+  let targetCount = 0;
+  let isGameActive = true;
+  let fallingItems = [];
+  let gameInterval = null;
+  let currentGameItemTypes = [];
+
+  function initGameItemTypes() {
+    const bird = birds[currentBird];
+    if (bird) {
+      currentGameItemTypes = [
+        {
+          type: "disk",
+          image: bird.disk_fg,
+          width: "8.13vw",
+          height: "8.13vw",
+          points: 1,
+        },
+        {
+          type: "note1",
+          image: bird.note1_fg,
+          width: "9.17vw",
+          height: "10.56vw",
+          points: 0,
+        },
+        {
+          type: "note2",
+          image: bird.note2_fg,
+          width: "7.43vw",
+          height: "11.18vw",
+          points: 0,
+        },
+        {
+          type: "headphones",
+          image: bird.headphones_fg,
+          width: "11.94vw",
+          height: "10.0vw",
+          points: 0,
+        },
+      ];
+
+      if (targetImage) targetImage.src = bird.disk_fg;
+    }
+  }
+
+  // создание падающего элемента
+  function createFallingItem() {
+    if (!isGameActive) return;
+    if (!gameField) return;
+    if (currentGameItemTypes.length === 0) initGameItemTypes();
+
+    const randomType =
+      currentGameItemTypes[
+        Math.floor(Math.random() * currentGameItemTypes.length)
+      ];
+
+    const item = document.createElement("img");
+    item.className = "falling_item";
+    item.src = randomType.image;
+    item.dataset.type = randomType.type;
+    item.dataset.points = randomType.points;
+
+    //  размеры поля
+    const fieldRect = gameField.getBoundingClientRect();
+    const itemWidth = parseFloat(randomType.width);
+    const itemHeight = parseFloat(randomType.height);
+
+    item.style.width = randomType.width;
+    item.style.height = randomType.height;
+    item.style.position = "absolute";
+
+    const maxLeft = fieldRect.width - parseFloat(itemWidth);
+    const randomLeft = Math.max(0, Math.random() * maxLeft);
+    item.style.left = randomLeft + "px";
+
+    item.style.top = "-10%";
+    item.style.cursor = "pointer";
+    item.style.zIndex = "20";
+    item.style.transition = "transform 0.05s ease";
+
+    const duration = Math.random() * 3 + 2;
+    item.style.animation = `fall ${duration}s linear forwards`;
+
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      handleItemClick(item);
+    });
+
+    gameField.appendChild(item);
+    fallingItems.push(item);
+
+    item.addEventListener("animationend", () => {
+      if (item.parentNode) {
+        item.remove();
+        fallingItems = fallingItems.filter((i) => i !== item);
+      }
+    });
+  }
+
+  function handleItemClick(item) {
+    if (!isGameActive) return;
+
+    const type = item.dataset.type;
+
+    if (type === "disk") {
+      targetCount++;
+      targetCounter.textContent = `${targetCount} / 5`;
+
+      item.style.transform = "scale(1.2)";
+      item.style.filter = "brightness(1.5)";
+
+      setTimeout(() => {
+        if (item.parentNode) item.remove();
+      }, 100);
+
+      fallingItems = fallingItems.filter((i) => i !== item);
+
+      if (targetCount >= 5) {
+        endGame(true);
+      }
+    } else {
+      const disk = fallingItems.find((i) => i.dataset.type === "disk");
+      if (disk) {
+        disk.remove();
+        fallingItems = fallingItems.filter((i) => i !== disk);
+      }
+
+      item.remove();
+      fallingItems = fallingItems.filter((i) => i !== item);
+    }
+  }
+
+  function startGame() {
+    console.log("Игра запущена!");
+
+    initGameItemTypes();
+
+    isGameActive = true;
+    targetCount = 0;
+    targetCounter.textContent = "0 / 5";
+
+    fallingItems.forEach((item) => {
+      if (item.parentNode) item.remove();
+    });
+    fallingItems = [];
+
+    if (gameInterval) clearInterval(gameInterval);
+
+    gameInterval = setInterval(() => {
+      createFallingItem();
+    }, 800);
+  }
+
+  function endGame(isWin) {
+    isGameActive = false;
+    if (gameInterval) clearInterval(gameInterval);
+
+    if (isWin) {
+      fallingItems.forEach((item) => {
+        if (item.parentNode) item.remove();
+      });
+      fallingItems = [];
+
+      if (typeof showReward === "function") {
+        showReward();
+        console.log("Победа! Пластинка выпадает");
+      }
+    }
+  }
+
+  // функция обновления игры при смене птицы
+  function updateGameForNewBird() {
+    if (window.gameStarted && isGameActive) {
+      startGame();
+    } else if (window.gameStarted && !isGameActive) {
+      initGameItemTypes();
+    }
+  }
+
+  if (!document.querySelector("#gameAnimationStyle")) {
+    const style = document.createElement("style");
+    style.id = "gameAnimationStyle";
+    style.textContent = `
+    @keyframes fall {
+      0% {
+        top: -10%;
+      }
+      100% {
+        top: 110%;
+      }
+    }
+  `;
+    document.head.appendChild(style);
+  }
+
+  window.addEventListener("scroll", function checkGameStart() {
+    const block4 = document.getElementById("block4");
+    if (block4 && !window.gameStarted) {
+      const block4Pos = block4.getBoundingClientRect().top;
+      if (block4Pos < window.innerHeight - 100 && block4Pos > -100) {
+        startGame();
+        window.gameStarted = true;
+        console.log("Игра запущена при скролле");
+      }
+    }
+  });
 });

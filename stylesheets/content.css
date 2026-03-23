@@ -1426,28 +1426,173 @@ button {
   background-color: #b2a3ff;
   z-index: 2002;
 }
-
-/* .wave_bar {
-  position: relative;
-  margin-top: 2.3vw;
+/* .sound_visual {
+  width: 28vw;
+  height: 2.6vw;
+}
+.wave_bar {
+  position: absolute;
   margin-left: 0.7vw;
   width: 0.4vw;
-  height: 2.63vw;
+  height: 2.6vw;
   border-radius: 7.6vw;
   background-color: #5d03cb;
   z-index: 2003;
 } */
-/* .block4 {
+/* ЭКРАН 4 */
+
+.block4 {
   position: relative;
   width: 100%;
   height: 66vw;
   overflow-x: hidden;
   margin-top: -5vw;
 }
-.field {
+.game_field {
+  position: relative;
+  overflow: hidden;
   width: 48vw;
   height: 54vw;
   background-color: #ffff;
   border-radius: 4vw;
-  box-shadow: inset;
-} */
+  box-shadow:
+    inset 0 0.8vw 1.2vw -0.6vw rgba(0, 0, 0, 0.4),
+    inset 0 -0.5vw 0.8vw -0.4vw rgba(0, 0, 0, 0.2);
+}
+
+.game_popup {
+  position: absolute;
+  top: 15vw;
+  right: 2vw;
+  width: 30vw;
+  height: 15vw;
+  background: #ffdb70;
+  border-radius: 2.5vw;
+  padding: 1.5vw 2vw;
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  z-index: 50;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideFromRight 0.4s ease;
+}
+
+.game_popup_content {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  width: 100%;
+  height: 100%;
+}
+
+.game_popup_bird {
+  width: 15vw;
+  height: 15vw;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.game_popup_text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2vw;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  flex: 1;
+  font-weight: 500;
+}
+
+.target_popup {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 16vw;
+  height: 10vw;
+  background: #ffdb70;
+  border-radius: 2vw;
+  padding: 1vw 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vw;
+  z-index: 50;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.target_image {
+  width: 6vw;
+  height: 6vw;
+  object-fit: contain;
+}
+
+.target_counter {
+  font-family: "Inter", sans-serif;
+  font-size: 1.8vw;
+  font-weight: 700;
+  color: #000;
+  background: white;
+  padding: 0.5vw 1.5vw;
+  border-radius: 2vw;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.falling_item {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.05s ease;
+  z-index: 20;
+}
+
+.falling_item:hover {
+  transform: scale(1.05);
+}
+
+.falling_item:active {
+  transform: scale(0.95);
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+.falling_item {
+  animation: fall linear forwards;
+}
+
+@keyframes slideFromRight {
+  0% {
+    right: -10vw;
+    opacity: 0;
+  }
+  100% {
+    right: 2vw;
+    opacity: 1;
+  }
+}
+
+.game_popup {
+  animation: slideFromLeft 0.4s ease;
+}
+
+.target_popup {
+  animation: slideFromRight 0.4s ease;
+}
+.star_big {
+  position: absolute;
+  margin-left: 81vw;
+  margin-top: -22vw;
+  width: 32vw;
+  height: 32vw;
+}
+.star_mini {
+  position: absolute;
+  margin-left: 68vw;
+  margin-top: -12vw;
+  width: 9.7vw;
+  height: 9.7vw;
+}
