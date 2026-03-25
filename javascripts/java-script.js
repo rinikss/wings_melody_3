@@ -889,6 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   //  ИНИЦИАЛИЗАЦИЯ
+  toggleScroll(true);
   changeAllElements(0);
   birdImage.style.opacity = "1";
 
