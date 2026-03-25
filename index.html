@@ -575,9 +575,8 @@
             id="laptopBird"
           />
           <p class="laptop_text" id="laptopText">
-            А теперь кликни на ноутбук. Там твои звуки. Сведи их в трек. Когда
-            закончишь, жми «Свести». Не бойся, это цифра — всё лечится
-            перезагрузкой.
+            А теперь кликни на ноутбук. Там твои звуки. Можешь послушать свой
+            первый трек!
           </p>
           <button class="laptop_close" id="closeLaptop">Понятно</button>
         </div>
@@ -594,8 +593,32 @@
             class="laptop_big_bg"
             id="laptopBigBg"
           />
-
-          <div class="laptop_big_content" id="laptopBigContent"></div>
+          <div class="laptop_big_content" id="laptopBigContent">
+            <button class="play_btt" id="playTrackBtn">
+              <img
+                src="./images/play_btt.svg"
+                alt="play"
+                class="play_icon"
+                id="playIcon"
+              />
+            </button>
+            <div class="sound_stroke_container" id="soundStrokeContainer">
+              <img
+                src="./images/sound_stroke.svg"
+                alt="stroke"
+                class="sound_stroke"
+                id="soundStroke"
+              />
+              <div
+                class="wave_bars_container"
+                id="waveBarsContainer"
+                style="display: flex"
+              ></div>
+            </div>
+            <div class="typing_text_container" id="typingTextContainer">
+              <p class="typing_text" id="typingText"></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -627,16 +650,60 @@
       </div>
 
       <div class="game_field" id="gameField"></div>
-      <img class="star_big" src="./images/star_big.svg" alt="" />
-      <img class="star_mini" src="./images/star_mini.svg" alt="" />
-      <!-- <img class="star_midle" src="./images/star_midle.svg" alt="" /> -->
+      <img class="star_big" id="StarBig" src="./images/star_big.svg" alt="" />
+      <img
+        class="star_midle"
+        id="StarMidle"
+        src="./images/star_midle.svg"
+        alt=""
+      />
+      <img
+        class="star_mini"
+        id="StarMini"
+        src="./images/star_mini.svg"
+        alt=""
+      />
+    </section>
+    <section class="block5" id="block5">
+      <div class="recording">
+        <img class="sound_needle" src="./images/sound_needle.svg" alt="" />
+        <img class="record_player" src="./images/record_player.svg" alt="" />
+        <img class="record_disk" src="./images/record_disk.svg" alt="" />
+      </div>
+      <div class="covers_disks">
+        <img class="vinyl_disk1" src="./images/vinyl_disk.svg" alt="" />
+        <img class="cover_3" src="./images/cover_3.svg" alt="" />
+        <img class="vinyl_disk2" src="./images/vinyl_disk.svg" alt="" />
+        <img class="cover_2" src="./images/cover_2.svg" alt="" />
+        <img class="vinyl_disk3" src="./images/vinyl_disk.svg" alt="" />
+        <img class="cover_1" src="./images/cover_1.svg" alt="" />
+      </div>
+    </section>
+    <section class="basement">
+      <img class="star_bsmnt_mini" src="./images/star_bsmnt_mini.svg" alt="" />
+      <div class="basement_content">
+        <p class="text_for_bsm">Скамина Арина Б25УКИ02</p>
+        <p class="text2_for_bsm">
+          Кураторы: Аракелян Нона, Рихтер Камила, Артем Латышев
+        </p>
+
+        <img
+          class="star_bsmnt_midle"
+          src="./images/star_bsmnt_midle.svg"
+          alt=""
+        />
+        <img
+          class="star_bsmnt_midle2"
+          src="./images/star_bsmnt_midle.svg"
+          alt=""
+        />
+        <img class="star_bsmnt_big" src="./images/star_bsmnt_big.svg" alt="" />
+        <img
+          class="star_bsmnt_mini2"
+          src="./images/star_bsmnt_mini.svg"
+          alt=""
+        />
+      </div>
     </section>
   </body>
 </html>
-<!-- <div class="sound_visual">
-              <div class="wave_bar"></div>
-              <div class="wave_bar"></div>
-              <div class="wave_bar"></div>
-              <div class="wave_bar"></div>
-              <div class="wave_bar"></div>
-            </div>  -->

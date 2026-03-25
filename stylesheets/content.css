@@ -1260,8 +1260,8 @@ button {
   position: absolute;
   right: 3vw;
   top: 15%;
-  width: 33vw;
-  height: 14.7vw;
+  width: 28vw;
+  height: 14vw;
   background: #ffdb70;
   border-radius: 37px;
   padding: 1.5vw 2vw;
@@ -1425,20 +1425,101 @@ button {
   border-radius: 2.5vw;
   background-color: #b2a3ff;
   z-index: 2002;
+  display: flex;
+  align-items: center;
 }
-/* .sound_visual {
-  width: 28vw;
-  height: 2.6vw;
+
+.play_btt {
+  width: 2.7vw;
+  height: 3vw;
+  margin-left: 1.5vw;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
 }
-.wave_bar {
+
+.play_btt:hover {
+  transform: scale(1.1);
+}
+
+.play_btt:active {
+  transform: scale(0.95);
+}
+
+.sound_stroke_container {
+  position: relative;
+  flex: 1;
+  height: 0.4vw;
+}
+
+.sound_stroke {
   position: absolute;
-  margin-left: 0.7vw;
+  width: 30.8vw;
+  height: 0.4vw;
+  top: 0;
+  left: -1.4vw;
+}
+
+.wave_bars_container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.15vw;
+  width: 26vw;
+  height: 2.6vw;
+  top: -1.1vw;
+  left: 1.2vw;
+}
+
+.wave_bar {
   width: 0.4vw;
   height: 2.6vw;
-  border-radius: 7.6vw;
+  border-radius: 0.3vw;
   background-color: #5d03cb;
-  z-index: 2003;
-} */
+  transform-origin: center;
+  flex-shrink: 0;
+}
+
+.wave_bars_container.playing .wave_bar {
+  animation: waveAnimation 0.6s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+@keyframes waveAnimation {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
+  }
+}
+
+.typing_text_container {
+  position: absolute;
+  width: 25vw;
+  height: 6.3vw;
+  margin-top: 20vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing_text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.3vw;
+  line-height: 1.4;
+  color: #000;
+  font-weight: 500;
+  margin: 0;
+}
+
 /* ЭКРАН 4 */
 
 .block4 {
@@ -1462,7 +1543,7 @@ button {
 
 .game_popup {
   position: absolute;
-  top: 15vw;
+  top: 12vw;
   right: 2vw;
   width: 30vw;
   height: 15vw;
@@ -1486,7 +1567,7 @@ button {
 }
 
 .game_popup_bird {
-  width: 15vw;
+  width: 10vw;
   height: 15vw;
   object-fit: contain;
   flex-shrink: 0;
@@ -1494,7 +1575,7 @@ button {
 
 .game_popup_text {
   font-family: "Inter", sans-serif;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   line-height: 1.4;
   color: #000;
   margin: 0;
@@ -1507,7 +1588,7 @@ button {
   top: 2vw;
   right: 2vw;
   width: 16vw;
-  height: 10vw;
+  height: 7vw;
   background: #ffdb70;
   border-radius: 2vw;
   padding: 1vw 2vw;
@@ -1589,10 +1670,356 @@ button {
   width: 32vw;
   height: 32vw;
 }
+.star_midle {
+  position: absolute;
+  margin-left: 50vw;
+  margin-top: -22vw;
+  width: 18.6vw;
+  height: 18.6vw;
+}
 .star_mini {
   position: absolute;
-  margin-left: 68vw;
-  margin-top: -12vw;
-  width: 9.7vw;
-  height: 9.7vw;
+  margin-left: 69vw;
+  margin-top: -8vw;
+  width: 9vw;
+  height: 9vw;
+}
+
+.star_big,
+.star_midle,
+.star_mini {
+  animation:
+    pulseGlow 3s ease-in-out infinite,
+    floatParticle 5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  transform-origin: center center;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(0.94);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+    opacity: 0.75;
+  }
+  25% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 1));
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+    opacity: 0.85;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  100% {
+    transform: translateY(-0.8vw) translateX(0.5vw);
+  }
+}
+
+.star_big {
+  animation-duration: 4s, 6s;
+  animation-delay:
+    0s,
+    -1s;
+}
+.star_midle {
+  animation-duration: 3.2s, 4.5s;
+  animation-delay:
+    -0.5s,
+    -1.5s;
+}
+.star_mini {
+  animation-duration: 2.8s, 3.8s;
+  animation-delay:
+    -1s,
+    -2s;
+}
+
+@keyframes continuousRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 5 ЭКРАН */
+.block5 {
+  width: 100%;
+  height: 61vw;
+  overflow-x: hidden;
+}
+.record_player {
+  position: absolute;
+  width: 56vw;
+  height: 50vw;
+  margin-left: 4.4vw;
+}
+.record_disk {
+  position: absolute;
+  width: 37vw;
+  height: 37vw;
+  margin-left: 9.7vw;
+  margin-top: 6.7vw;
+}
+.sound_needle {
+  position: absolute;
+  margin-left: 38vw;
+  margin-top: -2vw;
+  width: 21vw;
+  height: 33vw;
+  z-index: 3001;
+}
+.vinyl_disk1 {
+  position: absolute;
+  margin-left: 69.2vw;
+  margin-top: -2vw;
+  width: 18vw;
+  height: 18vw;
+}
+.cover_3 {
+  position: absolute;
+  margin-left: 69vw;
+  margin-top: 5.5vw;
+  width: 26vw;
+  height: 22vw;
+}
+.vinyl_disk2 {
+  position: absolute;
+  margin-left: 76.8vw;
+  margin-top: 9vw;
+  width: 18vw;
+  height: 18vw;
+}
+.cover_2 {
+  position: absolute;
+  margin-left: 69vw;
+  margin-top: 16.7vw;
+  width: 26vw;
+  height: 22vw;
+}
+.vinyl_disk3 {
+  position: absolute;
+  margin-left: 69.2vw;
+  margin-top: 20.9vw;
+  width: 18vw;
+  height: 18vw;
+}
+.cover_1 {
+  position: absolute;
+  margin-left: 69vw;
+  margin-top: 27.9vw;
+  width: 26vw;
+  height: 22vw;
+}
+
+/* ПОДВАЛ */
+.basement {
+  width: 100%;
+  height: 48vw;
+  overflow-y: hidden;
+}
+.basement_content {
+  position: absolute;
+  width: 100%;
+  height: 43vw;
+  margin-top: 5vw;
+  background-color: #ffff;
+  overflow: hidden;
+}
+.text_for_bsm {
+  font-family: "Inter", sans-serif;
+  font-size: 2.9vw;
+  line-height: 1.4;
+  color: #000;
+  margin-top: 3.6vw;
+  margin-left: 2.8vw;
+  flex: 1;
+  font-weight: 500;
+}
+.text2_for_bsm {
+  font-family: "Inter", sans-serif;
+  font-size: 2.9vw;
+  line-height: 1.4;
+  color: #000;
+  margin-top: 25vw;
+  margin-left: 45vw;
+  flex: 1;
+  font-weight: 500;
+}
+.star_bsmnt_mini,
+.star_bsmnt_midle,
+.star_bsmnt_midle2,
+.star_bsmnt_big,
+.star_bsmnt_mini2 {
+  animation: pulseAndFloat 6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes pulseAndFloat {
+  0% {
+    transform: scale(0.94) translateY(0px) translateX(0px);
+  }
+  12.5% {
+    transform: scale(1.04) translateY(-0.3vw) translateX(0.15vw);
+  }
+  25% {
+    transform: scale(1.08) translateY(-0.6vw) translateX(0.3vw);
+  }
+  37.5% {
+    transform: scale(1.04) translateY(-0.3vw) translateX(0.15vw);
+  }
+  50% {
+    transform: scale(0.94) translateY(0px) translateX(0px);
+  }
+  62.5% {
+    transform: scale(1.04) translateY(0.3vw) translateX(-0.15vw);
+  }
+  75% {
+    transform: scale(1.08) translateY(0.6vw) translateX(-0.3vw);
+  }
+  87.5% {
+    transform: scale(1.04) translateY(0.3vw) translateX(-0.15vw);
+  }
+  100% {
+    transform: scale(0.94) translateY(0px) translateX(0px);
+  }
+}
+
+.star_bsmnt_mini {
+  position: absolute;
+  margin-left: 94vw;
+  width: 9vw;
+  height: 9vw;
+  z-index: 3005;
+  animation-duration: 5.5s;
+  animation-delay: -0.5s;
+}
+
+.star_bsmnt_midle {
+  position: absolute;
+  margin-left: 78.8vw;
+  margin-top: -39vw;
+  width: 18.6vw;
+  height: 18.6vw;
+  animation-duration: 7s;
+  animation-delay: -1s;
+}
+
+.star_bsmnt_midle2 {
+  position: absolute;
+  margin-left: 23vw;
+  margin-top: -22vw;
+  width: 18.6vw;
+  height: 18.6vw;
+  animation-duration: 6.2s;
+  animation-delay: -0.8s;
+}
+
+.star_bsmnt_big {
+  position: absolute;
+  margin-left: -11vw;
+  margin-top: -16vw;
+  width: 32vw;
+  height: 32vw;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+
+.star_bsmnt_mini2 {
+  position: absolute;
+  margin-left: 11vw;
+  margin-top: -25vw;
+  width: 9vw;
+  height: 9vw;
+  animation-duration: 5s;
+  animation-delay: -1.2s;
+}
+
+.star_bsmnt_mini:hover,
+.star_bsmnt_midle:hover,
+.star_bsmnt_midle2:hover,
+.star_bsmnt_big:hover,
+.star_bsmnt_mini2:hover {
+  animation-play-state: paused;
+  transform: scale(1.15);
+  z-index: 3010;
+  transition: all 0.3s ease;
+}
+/* Дополнительные стили для 5 экрана */
+.record_disk {
+  transition: all 0.2s ease;
+}
+
+.vinyl_disk1,
+.vinyl_disk2,
+.vinyl_disk3 {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vinyl_disk1:hover,
+.vinyl_disk2:hover,
+.vinyl_disk3:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.return_disk_btn {
+  position: absolute;
+  bottom: 2vw;
+  right: 2vw;
+  padding: 0.8vw 2vw;
+  background: #ffdb70;
+  border: none;
+  border-radius: 2vw;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 1.2vw;
+  color: #000;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.return_disk_btn:hover {
+  transform: scale(1.05);
+  background: #f0d070;
+}
+
+/* Анимация для пластинок */
+.vinyl_disk1,
+.vinyl_disk2,
+.vinyl_disk3 {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.vinyl_disk1:hover,
+.vinyl_disk2:hover,
+.vinyl_disk3:hover {
+  transform: scale(1.05);
+}
+
+.sound_needle {
+  transition: transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.record_disk {
+  transition: all 0.2s ease;
 }
