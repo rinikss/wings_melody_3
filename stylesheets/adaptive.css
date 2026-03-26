@@ -5,26 +5,15 @@
     background-color: #12101c;
     transition: background-color 0.4s ease;
     position: relative;
+    overflow-y: visible;
   }
   .block1 {
     width: 100%;
-    height: 85vw;
+    height: 96vw;
     position: relative;
     overflow-x: hidden;
   }
-  body {
-    width: 100%;
-    overflow-x: hidden !important;
-    background-color: #12101c;
-    transition: background-color 0.4s ease;
-    position: relative;
-  }
-  .block1 {
-    width: 100%;
-    height: 85vw;
-    position: relative;
-    overflow-x: hidden;
-  }
+
   .text {
     position: absolute;
     width: 94vw;
@@ -36,7 +25,7 @@
 
   .top_text {
     font-family: "Inter";
-    font-size: 1.9vw;
+    font-size: 2.4vw;
     font-style: medium;
     color: white;
     font-weight: 500;
@@ -50,25 +39,22 @@
   }
 
   .top_text:first-child {
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
   }
 
   .top_text:nth-child(2) {
-    right: 0;
-    left: auto;
+    top: 4vw;
+    left: 33.8vw;
   }
 
   .top_text:last-child {
-    left: 0;
-    right: auto;
-    display: flex;
+    display: none;
   }
 
   /* /////////////////////////////////////////// */
   .bird_container {
     position: relative;
-    margin-top: 14vw;
+    margin-top: 18vw;
     width: 100%;
     height: 61vw;
     display: flex;
@@ -76,34 +62,27 @@
     justify-content: center;
   }
 
-  .bird_image {
-    object-fit: contain;
-    transition: opacity 0.2s ease;
-    position: absolute;
-    pointer-events: none;
-  }
-
   .bird_image[data-bird="1"] {
-    width: 23vw;
-    height: 42vw;
-    left: 50%;
+    width: 28vw;
+    height: 47vw;
+    left: 50vw;
     top: 25vw;
     transform: translate(-50%, -50%);
   }
 
   .bird_image[data-bird="2"] {
-    width: 21.6vw;
-    height: 45vw;
-    left: 38vw;
-    top: 24vw;
+    width: 26vw;
+    height: 49vw;
+    left: 36vw;
+    top: 26vw;
     transform: translateY(-50%);
   }
 
   .bird_image[data-bird="3"] {
-    width: 23.8vw;
-    height: 40vw;
+    width: 26vw;
+    height: 44vw;
     left: 36vw;
-    top: 26vw;
+    top: 28vw;
     transform: translateY(-50%);
   }
 
@@ -117,9 +96,9 @@
   }
 
   .icon_btn {
-    width: 7vw;
-    height: 7vw;
-    margin-top: 8vw;
+    width: 8vw;
+    height: 8vw;
+    margin-top: 15vw;
     border: none;
     cursor: pointer;
     padding: 0;
@@ -138,44 +117,32 @@
     background: transparent;
   }
 
-  .icon_btn:hover {
-    transform: scale(1.1);
-  }
-
-  .icon_btn:hover .btn_icon {
-    transform: scale(1.05);
-  }
-
-  .icon_btn:active {
-    transform: scale(0.85);
-  }
-
   #leftArrow {
     position: absolute;
-    left: 28vw;
+    left: 14vw;
     top: 26.8vw;
   }
   #rightArrow {
     position: absolute;
-    right: 28vw;
+    right: 14vw;
     top: 26.8vw;
   }
 
   .confirm_btn {
-    width: 24vw;
-    height: 5vw;
-    margin-top: 20vw;
+    width: 28vw;
+    height: 6vw;
+    margin-top: 30vw;
+    left: 52%;
     background: white;
     color: black;
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 1.9vw;
+    font-size: 2.4svw;
     border: none;
     border-radius: 3.4vw;
     cursor: pointer;
     position: absolute;
-    top: 51vw;
-    left: 50vw;
+
     transform: translateX(-50%);
     transition: all 0.2s ease;
     z-index: 100;
@@ -188,22 +155,20 @@
   .confirm_btn:active {
     transform: translateX(-50%) scale(0.98);
   }
-  .vinyl_left,
-  .vinyl_right {
+  .vinyl_left {
     position: absolute;
-    width: 74vw;
-    height: 74vw;
+    width: 98vw;
+    height: 98vw;
     pointer-events: none;
     z-index: 1;
   }
+  .vinyl_right {
+    display: none;
+  }
 
   .vinyl_left {
-    left: -30vw;
-    bottom: 8vw;
-  }
-  .vinyl_right {
-    right: -30vw;
-    bottom: 8vw;
+    left: 1vw;
+    bottom: 2vw;
   }
 
   .bird_image,
@@ -214,304 +179,66 @@
 
   /* ВТОРОЙ ЭКРАН */
   .block2 {
-    width: 100%;
-    height: 85vw;
-    background: transparent;
-    position: relative;
+    display: none;
   }
 
   .rules_popup {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 55vw;
-    height: 22vw;
-    background: #ffdb70;
-    border-radius: 2vw;
-    padding: 1.5vw 2vw;
     display: none;
-    align-items: center;
-    gap: 2vw;
-    z-index: 100;
-    box-shadow: 0 0.6vw 2vw rgba(0, 0, 0, 0.3);
-    animation: popupAppear 0.3s ease;
   }
 
   .rules_popup.show {
-    display: flex;
-  }
-
-  @keyframes popupAppear {
-    0% {
-      transform: translateX(-50%) scale(0.8);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
-    }
+    display: none;
   }
 
   .rules_bird {
-    position: absolute;
-    margin-top: -10vw;
-    margin-left: -2.4vw;
-    width: 18vw;
-    height: 20vw;
-    object-fit: contain;
-    flex-shrink: 0;
+    display: none;
   }
   .rules_container {
-    position: absolute;
-    width: 40vw;
-    height: 16.6vw;
-    margin-left: 15vw;
-    margin-top: -8vw;
+    display: none;
   }
   .rules_text {
-    font-family: "Inter", sans-serif;
-    font-size: 1.8vw;
-    line-height: 1.4;
-    color: #000;
-    flex: 1;
-    font-weight: 500;
+    display: none;
   }
 
   .rules_close {
-    position: absolute;
-    bottom: -4.8vw;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    color: black;
-    border: none;
-    border-radius: 3vw;
-    padding: 0.8vw 2vw;
-    font-family: "Inter", sans-serif;
-    font-size: 1.9vw;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    z-index: 101;
+    display: none;
   }
 
-  .rules_close:hover {
-    background: #f0f0f0;
-    transform: translateX(-50%) scale(1.05);
-  }
-
-  .rules_close:active {
-    transform: translateX(-50%) scale(0.95);
-  }
   .for_tetris {
-    position: absolute;
-    left: 21vw;
-    top: 8.8vw;
-    width: 57vw;
-    height: 57vw;
+    display: none;
   }
 
   .note_1 {
-    position: absolute;
-    left: 4vw;
-    top: 10vw;
-    width: 12vw;
-    height: 13vw;
+    display: none;
   }
 
   .note_2 {
-    position: absolute;
-    left: 4vw;
-    top: 30vw;
-    width: 11vw;
-    height: 13vw;
+    display: none;
   }
 
   .headphones {
-    position: absolute;
-    left: 3vw;
-    top: 50vw;
-    width: 16vw;
-    height: 13vw;
+    display: none;
   }
 
   .guitar {
-    position: absolute;
-    left: 28vw;
-    top: 60vw;
-    width: 44vw;
-    height: 32vw;
+    display: none;
   }
 
   .sticks {
-    position: absolute;
-    left: 78vw;
-    top: 50vw;
-    width: 22vw;
-    height: 22vw;
+    display: none;
   }
 
   .microphone {
-    position: absolute;
-    left: 84vw;
-    top: 24vw;
-    width: 12vw;
-    height: 26vw;
+    display: none;
   }
 
   .vinyl {
-    position: absolute;
-    left: 85vw;
-    top: 10vw;
-    width: 9vw;
-    height: 9vw;
-  }
-
-  .note_1,
-  .note_2,
-  .headphones,
-  .guitar,
-  .sticks,
-  .microphone,
-  .vinyl {
-    position: absolute;
-    cursor: grab;
-    transition: transform 0.2s ease;
-    z-index: 10;
-    user-select: none;
-    -webkit-user-drag: none;
-    margin: 0;
-  }
-
-  .note_1:hover,
-  .note_2:hover,
-  .headphones:hover,
-  .guitar:hover,
-  .sticks:hover,
-  .microphone:hover,
-  .vinyl:hover {
-    transform: scale(1.05);
-    filter: brightness(1.2);
-  }
-
-  .note_1:active,
-  .note_2:active,
-  .headphones:active,
-  .guitar:active,
-  .sticks:active,
-  .microphone:active,
-  .vinyl:active {
-    cursor: grabbing;
-    transform: scale(0.98);
-  }
-
-  .note_1.placed,
-  .note_2.placed,
-  .headphones.placed,
-  .guitar.placed,
-  .sticks.placed,
-  .microphone.placed,
-  .vinyl.placed {
-    opacity: 0.8;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .reward_vinyl {
-    position: fixed;
-    top: -20vw;
-    left: 50%;
-    transform: translateX(-50%) rotate(0deg);
-    width: 50vw;
-    height: 50vw;
-    z-index: 2000;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .reward_vinyl.show {
-    opacity: 1;
-    animation: vinylDrop 1.5s ease forwards;
-  }
-
-  .reward_vinyl img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
-  }
-
-  @keyframes vinylDrop {
-    0% {
-      top: -20vw;
-      transform: translateX(-50%) rotate(0deg) scale(0.8);
-      opacity: 0;
-    }
-    30% {
-      top: 30%;
-      transform: translateX(-50%) rotate(180deg) scale(1.1);
-      opacity: 1;
-    }
-    50% {
-      top: 35%;
-      transform: translateX(-50%) rotate(270deg) scale(1);
-      opacity: 1;
-    }
-    70% {
-      top: 33%;
-      transform: translateX(-50%) rotate(360deg) scale(0.95);
-      opacity: 1;
-    }
-    85% {
-      top: 35%;
-      transform: translateX(-50%) rotate(405deg) scale(1);
-      opacity: 1;
-    }
-    100% {
-      top: 35%;
-      transform: translateX(-50%) rotate(450deg) scale(1);
-      opacity: 1;
-    }
+    display: none;
   }
 
   /* кнопка для сбора награды */
   .collect_reward {
-    position: fixed;
-    bottom: 12vw;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffdb70;
-    color: black;
-    border: none;
-    border-radius: 3.4vw;
-    padding: 1vw 2.5vw;
-    font-family: "Inter", sans-serif;
-    font-size: 1.8vw;
-    font-weight: 500;
-    cursor: pointer;
-    z-index: 2001;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .collect_reward.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .collect_reward:hover {
-    transform: translateX(-50%) scale(1.05);
-    background: #f0d070;
-  }
-
-  .collect_reward:active {
-    transform: translateX(-50%) scale(0.95);
+    display: none;
   }
 
   /* ЭКРАН 3 */
@@ -606,46 +333,7 @@
     margin-left: 1.5vw;
     margin-top: 1.5vw;
   }
-
   /* АНИМАЦИИ */
-  @keyframes pulseBig {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    33% {
-      transform: scale(0.9);
-    }
-    66% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes pulseMedium {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    33% {
-      transform: scale(1.1);
-    }
-    66% {
-      transform: scale(0.95);
-    }
-  }
-
-  @keyframes pulseSmall {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    33% {
-      transform: scale(1.2);
-    }
-    66% {
-      transform: scale(0.9);
-    }
-  }
 
   @keyframes floatSoundpad {
     0%,
@@ -724,8 +412,8 @@
     position: absolute;
     left: 5vw;
     top: 20%;
-    width: 39vw;
-    height: 23.4vw;
+    width: 45vw;
+    height: 27vw;
     background: #ffdb70;
     border-radius: 2.5vw;
     padding: 1.5vw 2vw;
@@ -738,18 +426,18 @@
   }
 
   .soundpad_popup[data-bird="1"] {
-    width: 39vw;
-    height: 20vw;
+    width: 45vw;
+    height: 24vw;
   }
 
   .soundpad_popup[data-bird="2"] {
-    width: 39.5vw;
-    height: 20vw;
+    width: 48vw;
+    height: 24vw;
   }
 
   .soundpad_popup[data-bird="3"] {
-    width: 40vw;
-    height: 25vw;
+    width: 45vw;
+    height: 30vw;
   }
 
   .soundpad_popup.show {
@@ -771,23 +459,23 @@
   }
 
   .soundpad_popup[data-bird="1"] .soundpad_text_container {
-    width: 19vw;
+    width: 40vw;
     height: 7vw;
   }
 
   .soundpad_popup[data-bird="2"] .soundpad_text_container {
-    width: 18.6vw;
+    width: 45vw;
     height: 8.5vw;
   }
 
   .soundpad_popup[data-bird="3"] .soundpad_text_container {
-    width: 24.8vw;
+    width: 40vw;
     height: 8.5vw;
   }
 
   .soundpad_text {
     font-family: "Inter", sans-serif;
-    font-size: 1.8vw;
+    font-size: 2.4vw;
     line-height: 1.4;
     color: #000;
     margin: 0;
@@ -795,8 +483,8 @@
   }
 
   .soundpad_bird {
-    width: 18vw;
-    height: 20vw;
+    width: 20vw;
+    height: 22vw;
     object-fit: contain;
     flex-shrink: 0;
   }
@@ -812,33 +500,13 @@
     border-radius: 3vw;
     padding: 0.8vw 2vw;
     font-family: "Inter", sans-serif;
-    font-size: 1.9vw;
+    font-size: 2.4vw;
     font-weight: 500;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
     white-space: nowrap;
     z-index: 101;
-  }
-
-  .soundpad_close:hover {
-    background: #f0f0f0;
-    transform: translateX(-50%) scale(1.05);
-  }
-
-  .soundpad_close:active {
-    transform: translateX(-50%) scale(0.95);
-  }
-
-  @keyframes slideFromLeft {
-    0% {
-      left: -10vw;
-      opacity: 0;
-    }
-    100% {
-      left: 5vw;
-      opacity: 1;
-    }
   }
 
   .reflected {
@@ -869,8 +537,8 @@
     position: absolute;
     right: 3vw;
     top: 50%;
-    width: 38vw;
-    height: 20vw;
+    width: 45vw;
+    height: 22vw;
     background: #ffdb70;
     border-radius: 2.5vw;
     padding: 1.5vw 2vw;
@@ -903,7 +571,7 @@
 
   .laptop_text {
     font-family: "Inter", sans-serif;
-    font-size: 1.8vw;
+    font-size: 2.4vw;
     line-height: 1.4;
     color: #000;
     margin: 0;
@@ -922,7 +590,7 @@
     border-radius: 3vw;
     padding: 0.8vw 2vw;
     font-family: "Inter", sans-serif;
-    font-size: 1.9vw;
+    font-size: 2.4vw;
     font-weight: 500;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -1347,6 +1015,7 @@
     width: 100%;
     height: 61vw;
     overflow-x: hidden;
+    overflow: visible;
   }
   .record_player {
     position: absolute;
