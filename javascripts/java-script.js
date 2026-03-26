@@ -872,7 +872,7 @@ document.addEventListener("DOMContentLoaded", function () {
         laptopBigPopup.classList.remove("show");
         laptopBigPopup.style.display = "none";
         toggleScroll(false);
-        // Останавливаем звук и анимацию, если они были запущены
+
         if (isPlaying) {
           stopWaveAnimation();
           isPlaying = false;
@@ -889,7 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   //  ИНИЦИАЛИЗАЦИЯ
-  toggleScroll(true);
+  // toggleScroll(true); временно закоменчен блок для скролла!
   changeAllElements(0);
   birdImage.style.opacity = "1";
 
@@ -1409,25 +1409,11 @@ document.addEventListener("DOMContentLoaded", function () {
     vinyl_disk3: "./sounds/track_4.mp3",
   };
 
+  // СОЗДАЕМ КНОПКУ БЕЗ ИНЛАЙН-СТИЛЕЙ
   const returnBtn = document.createElement("button");
   returnBtn.textContent = "Вернуть пластинку";
-  returnBtn.style.cssText = `
-  position: fixed;
-  bottom: 2vw;
-  right: 2vw;
-  padding: 0.8vw 2vw;
-  background: #FFDB70;
-  border: none;
-  border-radius: 2vw;
-  cursor: pointer;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 1.2vw;
-  z-index: 1000;
-  display: none;
-`;
+  returnBtn.className = "return_disk_btn"; // только класс!
   document.body.appendChild(returnBtn);
-
   function stopPlayerTrack() {
     if (playerAudio) {
       playerAudio.pause();

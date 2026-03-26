@@ -20,7 +20,7 @@ body {
 }
 .top_text {
   font-family: "Inter";
-  font-size: 20px;
+  font-size: 1.3vw;
   font-style: medium;
   color: white;
   font-weight: 500;
@@ -147,9 +147,9 @@ button {
   color: black;
   font-family: "Inter", sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.3vw;
   border: none;
-  border-radius: 50px;
+  border-radius: 3.4vw;
   cursor: pointer;
   position: absolute;
   top: 51vw;
@@ -166,23 +166,23 @@ button {
 .confirm_btn:active {
   transform: translateX(-50%) scale(0.98);
 }
-/* .vinyl_left,
+.vinyl_left,
 .vinyl_right {
   position: absolute;
-  width: 46vw;
-  height: 46vw;
+  width: 71vw;
+  height: 71vw;
   pointer-events: none;
   z-index: 1;
 }
 
 .vinyl_left {
-  left: -35vw;
-  bottom: 25vw;
+  left: -30vw;
+  bottom: 0vw;
 }
 .vinyl_right {
-  right: -5vw;
-  bottom: 25vw;
-} */
+  right: -30vw;
+  bottom: 0vw;
+}
 
 .bird_image,
 .icon_btn,
@@ -211,7 +211,7 @@ button {
   align-items: center;
   gap: 2vw;
   z-index: 100;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.6vw 2vw rgba(0, 0, 0, 0.3);
   animation: popupAppear 0.3s ease;
 }
 
@@ -266,7 +266,7 @@ button {
   border-radius: 3vw;
   padding: 0.8vw 2vw;
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 1.1vw;
   font-weight: 500;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -461,10 +461,10 @@ button {
   background: #ffdb70;
   color: black;
   border: none;
-  border-radius: 50px;
+  border-radius: 3.4vw;
   padding: 1vw 2.5vw;
   font-family: "Inter", sans-serif;
-  font-size: 20px;
+  font-size: 1.3vw;
   font-weight: 500;
   cursor: pointer;
   z-index: 2001;
@@ -703,7 +703,7 @@ button {
   width: 29.5vw;
   height: 13.4vw;
   background: #ffdb70;
-  border-radius: 37px;
+  border-radius: 2.5vw;
   padding: 1.5vw 2vw;
   display: none;
   align-items: center;
@@ -1439,7 +1439,12 @@ button {
   border: none;
   padding: 0;
 }
-
+.play_icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 .play_btt:hover {
   transform: scale(1.1);
 }
@@ -1782,7 +1787,7 @@ button {
   margin-top: -2vw;
   width: 21vw;
   height: 33vw;
-  z-index: 3001;
+  z-index: 2001;
 }
 .vinyl_disk1 {
   position: absolute;
@@ -1981,8 +1986,8 @@ button {
 
 .return_disk_btn {
   position: absolute;
-  bottom: 2vw;
-  right: 2vw;
+  bottom: 52vw;
+  right: 5vw;
   padding: 0.8vw 2vw;
   background: #ffdb70;
   border: none;
