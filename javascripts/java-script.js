@@ -767,16 +767,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ЗАКРЫТИЕ ПОПАПОВ
-  function closeAllPopups() {
-    if (rulesPopup) rulesPopup.classList.remove("show");
-    if (soundpadPopup) soundpadPopup.classList.remove("show");
-    if (pultPopup) {
-      pultPopup.classList.remove("show");
-      pultPopup.style.display = "none";
-      toggleScroll(false);
-    }
-    if (laptopPopup) laptopPopup.classList.remove("show");
-  }
 
   if (closeRules) {
     closeRules.addEventListener("click", (e) => {
@@ -822,7 +812,7 @@ document.addEventListener("DOMContentLoaded", function () {
       laptopPopup?.classList.remove("show");
     });
   }
-  //  ОТКРЫТИЕ БОЛЬШОГО ПОПАПА НОУТБУКА
+  // ОТКРЫТИЕ БОЛЬШОГО ПОПАПА НОУТБУКА
   if (laptop) {
     laptop.style.cursor = "pointer";
     laptop.addEventListener("click", function () {
@@ -836,16 +826,41 @@ document.addEventListener("DOMContentLoaded", function () {
           toggleScroll(true);
 
           const typingText = document.getElementById("typingText");
-          const text =
-            'А если хочешь узнать больше о создании музыки, то переходи по ссылке и ознакомься с исследованием бренда студии звукозаписи "ХРИПОТА".';
+
+          const textBeforeLink =
+            "А если хочешь узнать больше о создании музыки, то переходи по ";
+          const linkText = "ссылке";
+          const linkUrl = "https://www.calameo.com/accounts/8188997";
+          const textAfterLink =
+            ' и ознакомься с исследованием бренда студии звукозаписи "ХРИПОТА".';
+
+          const fullHtml =
+            textBeforeLink +
+            `<a href="${linkUrl}" target="_blank" class="typing_link" style="color: #5d03cb; text-decoration: underline; cursor: pointer;">${linkText}</a>` +
+            textAfterLink;
 
           if (typingText) {
             typingText.innerHTML = "";
             let i = 0;
+            let isLinkInserted = false;
 
+            // Функция печати текста с HTML
             function typeWriter() {
-              if (i < text.length) {
-                typingText.innerHTML += text.charAt(i);
+              if (!isLinkInserted && i >= textBeforeLink.length) {
+                // Вставляем ссылку целиком
+                typingText.innerHTML += `<a href="${linkUrl}" target="_blank" class="typing_link" style="color: #5d03cb; text-decoration: underline; cursor: pointer;">${linkText}</a>`;
+                isLinkInserted = true;
+                i = 0;
+                typeWriter();
+                return;
+              }
+
+              if (isLinkInserted && i < textAfterLink.length) {
+                typingText.innerHTML += textAfterLink.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+              } else if (!isLinkInserted && i < textBeforeLink.length) {
+                typingText.innerHTML += textBeforeLink.charAt(i);
                 i++;
                 setTimeout(typeWriter, 50);
               }
@@ -873,12 +888,13 @@ document.addEventListener("DOMContentLoaded", function () {
         laptopBigPopup.style.display = "none";
         toggleScroll(false);
 
-        if (isPlaying) {
-          stopWaveAnimation();
-          isPlaying = false;
+        if (typeof isPlaying !== "undefined" && isPlaying) {
+          if (typeof stopWaveAnimation === "function") {
+            stopWaveAnimation();
+            isPlaying = false;
+          }
         }
 
-        // ЗАПУСКАЕМ АНИМАЦИЮ ВЫПАДЕНИЯ ПЛАСТИНКИ
         if (typeof showReward === "function") {
           showReward();
           console.log("Пластинка выпадает после закрытия ноутбука");
