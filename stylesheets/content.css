@@ -455,7 +455,7 @@ button {
 /* кнопка для сбора награды */
 .collect_reward {
   position: fixed;
-  bottom: 20%;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   background: #ffdb70;
@@ -1836,7 +1836,6 @@ button {
 .basement {
   width: 100%;
   height: 48vw;
-  overflow-y: hidden;
 }
 .basement_content {
   position: absolute;
@@ -1907,7 +1906,8 @@ button {
 
 .star_bsmnt_mini {
   position: absolute;
-  margin-left: 94vw;
+  margin-left: 60vw;
+  margin-top: -30vw;
   width: 9vw;
   height: 9vw;
   z-index: 3005;
