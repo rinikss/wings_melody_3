@@ -1013,27 +1013,29 @@
   /* 5 ЭКРАН */
   .block5 {
     width: 100%;
-    height: 61vw;
+    height: 100vw;
     overflow-x: hidden;
-    overflow: visible;
+  }
+  .recording {
+    margin-left: 15vw;
   }
   .record_player {
     position: absolute;
     width: 56vw;
     height: 50vw;
-    margin-left: 4.4vw;
+    margin-left: 8vw;
     margin-top: 5vw;
   }
   .record_disk {
     position: absolute;
     width: 37vw;
     height: 37vw;
-    margin-left: 9.7vw;
+    margin-left: 14vw;
     margin-top: 11.7vw;
   }
   .sound_needle {
     position: absolute;
-    margin-left: 38vw;
+    margin-left: 41.8vw;
     margin-top: 3vw;
     width: 21vw;
     height: 33vw;
@@ -1041,43 +1043,43 @@
   }
   .vinyl_disk1 {
     position: absolute;
-    margin-left: 69.2vw;
-    margin-top: 3vw;
+    margin-left: 8.4vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_3 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 10.5vw;
+    margin-left: 8vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
   .vinyl_disk2 {
     position: absolute;
-    margin-left: 76.8vw;
-    margin-top: 14vw;
+    margin-left: 43.7vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_2 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 21.7vw;
+    margin-left: 36vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
   .vinyl_disk3 {
     position: absolute;
-    margin-left: 69.2vw;
-    margin-top: 25.9vw;
+    margin-left: 64.5vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_1 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 33vw;
+    margin-left: 64vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
@@ -1092,7 +1094,7 @@
     cursor: pointer;
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 1.9vw;
+    font-size: 2.4vw;
     color: #000;
     z-index: 100;
     transition: all 0.2s ease;
@@ -2433,26 +2435,29 @@
   /* 5 ЭКРАН */
   .block5 {
     width: 100%;
-    height: 61vw;
+    height: 100vw;
     overflow-x: hidden;
+  }
+  .recording {
+    margin-left: 15vw;
   }
   .record_player {
     position: absolute;
     width: 56vw;
     height: 50vw;
-    margin-left: 4.4vw;
+    margin-left: 8vw;
     margin-top: 5vw;
   }
   .record_disk {
     position: absolute;
     width: 37vw;
     height: 37vw;
-    margin-left: 9.7vw;
+    margin-left: 14vw;
     margin-top: 11.7vw;
   }
   .sound_needle {
     position: absolute;
-    margin-left: 38vw;
+    margin-left: 41.8vw;
     margin-top: 3vw;
     width: 21vw;
     height: 33vw;
@@ -2460,43 +2465,43 @@
   }
   .vinyl_disk1 {
     position: absolute;
-    margin-left: 69.2vw;
-    margin-top: 3vw;
+    margin-left: 8.4vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_3 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 10.5vw;
+    margin-left: 8vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
   .vinyl_disk2 {
     position: absolute;
-    margin-left: 76.8vw;
-    margin-top: 14vw;
+    margin-left: 43.7vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_2 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 21.7vw;
+    margin-left: 36vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
   .vinyl_disk3 {
     position: absolute;
-    margin-left: 69.2vw;
-    margin-top: 25.9vw;
+    margin-left: 64.5vw;
+    margin-top: 62vw;
     width: 18vw;
     height: 18vw;
   }
   .cover_1 {
     position: absolute;
-    margin-left: 69vw;
-    margin-top: 33vw;
+    margin-left: 64vw;
+    margin-top: 69vw;
     width: 26vw;
     height: 22vw;
   }
@@ -2511,7 +2516,7 @@
     cursor: pointer;
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 1.9vw;
+    font-size: 2.4vw;
     color: #000;
     z-index: 100;
     transition: all 0.2s ease;
