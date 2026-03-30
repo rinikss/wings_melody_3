@@ -46,7 +46,6 @@ body {
   margin-left: auto;
 }
 
-/* /////////////////////////////////////////// */
 .bird_container {
   position: relative;
   width: 100%;
@@ -86,8 +85,6 @@ body {
   top: 26vw;
   transform: translateY(-50%);
 }
-
-/*/////////////////////////////////////// */
 
 button {
   background: transparent;
@@ -189,7 +186,6 @@ button {
 .confirm_btn {
   z-index: 10;
 }
-/* ВТОРОЙ ЭКРАН */
 .block2 {
   width: 100%;
   height: 58vw;
@@ -452,7 +448,6 @@ button {
   }
 }
 
-/* кнопка для сбора награды */
 .collect_reward {
   position: fixed;
   bottom: 5%;
@@ -488,7 +483,6 @@ button {
   transform: translateX(-50%) scale(0.95);
 }
 
-/* ЭКРАН 3 */
 .block3 {
   position: relative;
   width: 100%;
@@ -496,7 +490,6 @@ button {
   overflow-x: hidden;
 }
 
-/* ЭЛЛИПСЫ */
 .elips_1 {
   width: 33vw;
   height: 33vw;
@@ -581,7 +574,6 @@ button {
   margin-top: 1.5vw;
 }
 
-/* АНИМАЦИИ */
 @keyframes pulseBig {
   0%,
   100% {
@@ -657,7 +649,6 @@ button {
   }
 }
 
-/* ОСНОВНЫЕ ЭЛЕМЕНТЫ */
 .soundpad {
   position: absolute;
   width: 38.8vw;
@@ -695,7 +686,6 @@ button {
   z-index: 5;
 }
 
-/* ОКОШКО С ПРАВИЛАМИ */
 .soundpad_popup {
   position: absolute;
   left: 5vw;
@@ -817,7 +807,6 @@ button {
   }
 }
 
-/* ПОПАП ПУЛЬТА */
 .pult_popup {
   position: fixed;
   top: 50%;
@@ -862,7 +851,6 @@ button {
   align-items: center;
 }
 
-/* картинка пульта */
 .pult_body {
   position: absolute;
   width: 61.8vw;
@@ -874,7 +862,6 @@ button {
   transform: translate(-50%, -50%);
 }
 
-/* кнопка закрытия */
 .pult_close {
   position: absolute;
   top: -1.5vw;
@@ -905,7 +892,6 @@ button {
   transform: scale(0.95);
 }
 
-/* ПИАНИНО */
 .piano_container {
   position: absolute;
   width: 53.5vw;
@@ -946,7 +932,6 @@ button {
   margin-right: 0;
 }
 
-/* ОБЪЕДИНЕННЫЙ СЕЛЕКТОР для верхних клавиш */
 .piano_upper_keys {
   position: absolute;
   top: 0.2vw;
@@ -1021,7 +1006,6 @@ button {
   filter: brightness(0.9);
 }
 
-/* СВЕТЯЩИЕСЯ КНОПКИ */
 .glow_button {
   position: absolute;
   width: 16.5vw;
@@ -1079,7 +1063,6 @@ button {
   }
 }
 
-/* РЫЧАЖКИ  */
 .lever_button {
   position: absolute;
   width: 2.5vw;
@@ -1126,7 +1109,6 @@ button {
   transform: scale(1.05);
 }
 
-/* ПРОСТЫЕ КНОПКИ */
 .simple_button {
   position: absolute;
   width: 3.9vw;
@@ -1172,7 +1154,6 @@ button {
   filter: brightness(0.9);
 }
 
-/* ПОЛЗУНКИ */
 .sliders_container {
   position: absolute;
   left: 50vw;
@@ -1255,7 +1236,6 @@ button {
   cursor: pointer;
 }
 
-/* попап с правилами для ноутбука */
 .laptop_popup {
   position: absolute;
   right: 3vw;
@@ -1342,7 +1322,6 @@ button {
   }
 }
 
-/* БОЛЬШОЙ ПОПАП НОУТБУКА */
 .laptop_big_popup {
   position: fixed;
   top: 50%;
@@ -1374,7 +1353,6 @@ button {
   align-items: center;
 }
 
-/* ноутбук */
 .laptop_big_bg {
   position: absolute;
   width: 50vw;
@@ -1386,7 +1364,6 @@ button {
   transform: translate(-50%, -50%);
 }
 
-/* кнопка закрытия */
 .laptop_big_close {
   position: absolute;
   top: -1.5vw;
@@ -1524,8 +1501,6 @@ button {
   font-weight: 500;
   margin: 0;
 }
-
-/* ЭКРАН 4 */
 
 .block4 {
   position: relative;
@@ -1762,7 +1737,6 @@ button {
   }
 }
 
-/* 5 ЭКРАН */
 .block5 {
   width: 100%;
   height: 61vw;
@@ -1832,7 +1806,6 @@ button {
   height: 22vw;
 }
 
-/* ПОДВАЛ */
 .basement {
   width: 100%;
   height: 48vw;
@@ -1965,7 +1938,7 @@ button {
   z-index: 3010;
   transition: all 0.3s ease;
 }
-/* Дополнительные стили для 5 экрана */
+
 .record_disk {
   transition: all 0.2s ease;
 }
@@ -2006,7 +1979,6 @@ button {
   background: #f0d070;
 }
 
-/* Анимация для пластинок */
 .vinyl_disk1,
 .vinyl_disk2,
 .vinyl_disk3 {

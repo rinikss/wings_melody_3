@@ -1,14 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ДАННЫЕ
   const birds = [
     {
-      // Птица 1
       image: "./images/bird1.svg",
       color: "#12101C",
       popup_color: "#12101C",
       size: "1",
-
-      // Второй экран
       box: "./images/box.svg",
       note_1: "./images/note_1.svg",
       note_2: "./images/note_2.svg",
@@ -18,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
       microphone: "./images/microphone.svg",
       vinyl: "./images/vinyl.svg",
 
-      // Третий экран
       elips1_color: "#7083ff",
       elips2_color: "#b2a3ff",
       elips3_color: "#390071",
@@ -36,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
       piano_key: "./images/piano_key.svg",
       last_key: "./images/last_key.svg",
 
-      // Ноутбук
       laptop_bg: "./images/laptop_popup.svg",
       laptop_container_color: "#b2a3ff",
       play_btn: "./images/play_btt.svg",
@@ -44,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
       sound_stroke: "./images/sound_stroke.svg",
       wave_bars_color: "#5d03cb",
 
-      // Игра 4 экран
       disk_fg: "./images/disk_fg.svg",
       note1_fg: "./images/note1_fg.svg",
       note2_fg: "./images/note2_fg.svg",
@@ -53,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
       star_midle: "./images/star_midle.svg",
       star_mini: "./images/star_mini.svg",
 
-      // 5 экран - проигрыватель
       sound_needle: "./images/sound_needle.svg",
       record_player: "./images/record_player.svg",
       record_disk: "./images/record_disk.svg",
@@ -62,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cover_3: "./images/cover_3.svg",
       vinyl_disk: "./images/vinyl_disk.svg",
 
-      // Звезды в подвале
       star_bsmnt_mini: "./images/star_bsmnt_mini.svg",
       star_bsmnt_midle: "./images/star_bsmnt_midle.svg",
       star_bsmnt_big: "./images/star_bsmnt_big.svg",
@@ -70,13 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
       star_bsmnt_midle2: "./images/star_bsmnt_midle.svg",
     },
     {
-      // Птица 2
       image: "./images/bird2.svg",
       color: "#00313B",
       popup_color: "#00313B",
       size: "2",
 
-      // Второй экран
       box: "./images/box2.svg",
       note_1: "./images/note_11.svg",
       note_2: "./images/note_22.svg",
@@ -86,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
       microphone: "./images/microphone_2.svg",
       vinyl: "./images/vinyl_2.svg",
 
-      // Третий экран
       elips1_color: "#EE9300",
       elips2_color: "#FFDB70",
       elips3_color: "#FFF0B4",
@@ -104,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       piano_key: "./images/piano_key2.svg",
       last_key: "./images/last_key2.svg",
 
-      // Ноутбук
       laptop_bg: "./images/laptop_popup2.svg",
       laptop_container_color: "#EE9300",
       play_btn: "./images/play_btt11.svg",
@@ -112,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       sound_stroke: "./images/sound_stroke2.svg",
       wave_bars_color: "#FFF0B4",
 
-      // Игра 4 экран
       disk_fg: "./images/disk_fg2.svg",
       note1_fg: "./images/note11_fg.svg",
       note2_fg: "./images/note22_fg.svg",
@@ -121,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
       star_midle: "./images/star_midle2.svg",
       star_mini: "./images/star_mini2.svg",
 
-      // 5 экран - проигрыватель
       sound_needle: "./images/sound_needle2.svg",
       record_player: "./images/record_player2.svg",
       record_disk: "./images/record_disk2.svg",
@@ -130,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cover_3: "./images/cover_33.svg",
       vinyl_disk: "./images/vinyl_disk.svg",
 
-      // Звезды в подвале
       star_bsmnt_mini: "./images/star_bsmnt_mini2.svg",
       star_bsmnt_midle: "./images/star_bsmnt_midle2.svg",
       star_bsmnt_big: "./images/star_bsmnt_big2.svg",
@@ -138,13 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
       star_bsmnt_midle2: "./images/star_bsmnt_midle2.svg",
     },
     {
-      // Птица 3
       image: "./images/bird3.svg",
       color: "#00117D",
       popup_color: "#00117D",
       size: "3",
 
-      // Второй экран
       box: "./images/box3.svg",
       note_1: "./images/note_111.svg",
       note_2: "./images/note_222.svg",
@@ -154,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
       microphone: "./images/microphone_3.svg",
       vinyl: "./images/vinyl_3.svg",
 
-      // Третий экран
       elips1_color: "#F04B35",
       elips2_color: "#F0A835",
       elips3_color: "#F0C135",
@@ -172,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
       piano_key: "./images/piano_key3.svg",
       last_key: "./images/last_key3.svg",
 
-      // Ноутбук
       laptop_bg: "./images/laptop_popup3.svg",
       laptop_container_color: "#F08C35",
       play_btn: "./images/play_btt11.svg",
@@ -180,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
       sound_stroke: "./images/sound_stroke2.svg",
       wave_bars_color: "#FFF0B4",
 
-      // Игра 4 экран
       disk_fg: "./images/disk_fg3.svg",
       note1_fg: "./images/note111_fg.svg",
       note2_fg: "./images/note222_fg.svg",
@@ -189,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
       star_midle: "./images/star_midle3.svg",
       star_mini: "./images/star_mini3.svg",
 
-      // 5 экран - проигрыватель
       sound_needle: "./images/sound_needle3.svg",
       record_player: "./images/record_player3.svg",
       record_disk: "./images/record_disk3.svg",
@@ -198,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cover_3: "./images/cover_333.svg",
       vinyl_disk: "./images/vinyl_disk.svg",
 
-      // Звезды в подвале
       star_bsmnt_mini: "./images/star_bsmnt_mini3.svg",
       star_bsmnt_midle: "./images/star_bsmnt_midle3.svg",
       star_bsmnt_big: "./images/star_bsmnt_big3.svg",
@@ -207,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  //ТЕКСТЫ
   const rulesTexts = [
     "Дорогуша, перед тобой сцена в клетку, а вокруг — ноты, музыкальные инструменты. Перетащи их внутрь так, чтобы заполнить все пустые клетки. Ни одной свободной, ни одного наложения. Как идеальный чемодан в тур. Справишься?",
     "Друг мой, посмотри: ноты и инструменты ждут своего места. Перетащи их в пустые клетки так, чтобы заполнить всё поле. Ни одной свободной клеточки, как в идеальной мелодии ни одной лишней ноты. У тебя получится!",
@@ -225,21 +201,19 @@ document.addEventListener("DOMContentLoaded", function () {
     "./images/bird2mini.svg",
     "./images/bird3mini.svg",
   ];
-  // Тексты для попапа ноутбука
+
   const laptopTexts = [
     " А теперь кликни на ноутбук. Там твои звуки. Можешь послушать свой первый трек!",
     "А теперь кликни на ноутбук. Здесь твои звуки оживают. Когда почувствуешь, что пора — жми на кнопку плей. Это твой момент.",
     "А теперь сюда. Твои звуки уже собраны в трек. Если сделал хорошо — будет хит. Если нет — будет опыт. Жми на плей!",
   ];
 
-  // Тексты для игры на 4 экране
   const gameTexts = [
     "Сверху падают пластинки, ноты и наушники. Тебе нужно поймать 5 виниловых пластинок. Кликай только по ним. Если кликнешь по ноте — пластинка исчезнет. Готов? Лови!",
     "Смотри, сверху падают пластинки, ноты и наушники. Нам нужно поймать 5 виниловых пластинок. Кликай только по ним. Если кликнешь по ноте, то пластинка исчезнет. Ты справишься, я рядом!",
     "Сверху падает всякие штуки: ноты, наушники, пластинки. Нас интересует только винил. Поймай 5 штук. Кликнешь по ноте и пластинка улетит. Внимание, реакция, собранность. Погнали.",
   ];
-  // ЭЛЕМЕНТЫ
-  // первый экран
+
   const birdImage = document.getElementById("birdImage");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -247,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const html = document.documentElement;
 
-  // второй экран
   const box = document.getElementById("tetrisBox");
   const note1 = document.getElementById("note1");
   const note2 = document.getElementById("note2");
@@ -257,7 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const microphone = document.getElementById("microphone");
   const vinyl = document.getElementById("vinyl");
 
-  // окошки
   const rulesPopup = document.getElementById("rulesPopup");
   const rulesBird = document.getElementById("rulesBird");
   const rulesText = document.getElementById("rulesText");
@@ -270,30 +242,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const pultPopup = document.getElementById("pultPopup");
   const closePult = document.getElementById("closePult");
-  // элементы попапа ноутбука
+
   const laptopPopup = document.getElementById("laptopPopup");
   const laptopBird = document.getElementById("laptopBird");
   const laptopText = document.getElementById("laptopText");
   const closeLaptop = document.getElementById("closeLaptop");
-  // элементы большого попапа ноутбука
+
   const laptopBigPopup = document.getElementById("laptopBigPopup");
   const laptopBigBg = document.getElementById("laptopBigBg");
   const laptopBigContent = document.getElementById("laptopBigContent");
   const closeLaptopBig = document.getElementById("closeLaptopBig");
 
-  // третий экран
   const soundpad = document.getElementById("SoundPad");
   const laptop = document.getElementById("LapTop");
   const wires = document.getElementById("wires");
 
-  //  4 экран
   const starBig = document.getElementById("StarBig");
   const starMidle = document.getElementById("StarMidle");
   const starMini = document.getElementById("StarMini");
   const gamePopupBird = document.getElementById("gamePopupBird");
   const gamePopupText = document.getElementById("gamePopupText");
 
-  // ПЕРЕМЕННЫЕ
   let currentBird = 0;
   let isConfirmed = false;
 
@@ -306,16 +275,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (element) element.src = src;
   };
 
-  // !!! ОСНОВНАЯ ФУНКЦИЯ СМЕНЫ !!!
   function changeAllElements(index) {
     const bird = birds[index];
 
-    //  ПЕРВЫЙ ЭКРАН
     setElementSrc(birdImage, bird.image);
     if (birdImage) birdImage.setAttribute("data-bird", bird.size);
     if (!isConfirmed) body.style.backgroundColor = bird.color;
 
-    // ВТОРОЙ ЭКРАН
     setElementSrc(box, bird.box);
     setElementSrc(note1, bird.note_1);
     setElementSrc(note2, bird.note_2);
@@ -325,13 +291,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setElementSrc(microphone, bird.microphone);
     setElementSrc(vinyl, bird.vinyl);
 
-    //  ТРЕТИЙ ЭКРАН
     setElementSrc(soundpad, bird.soundpad);
     setElementSrc(laptop, bird.laptop);
     setElementSrc(wires, bird.wires);
     if (pultPopup) pultPopup.style.backgroundColor = bird.popup_color;
 
-    //  ЭЛЕМЕНТЫ НОУТБУКА
     const laptopBigContent = document.getElementById("laptopBigContent");
     const laptopPlayIcon = document.getElementById("playIcon");
     const laptopSoundStroke = document.getElementById("soundStroke");
@@ -365,7 +329,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    //  ТЕКСТЫ ПОПАПОВ
     if (rulesText) rulesText.textContent = rulesTexts[index];
     if (rulesBird) rulesBird.src = birdMiniImages[index];
     if (soundpadBird) soundpadBird.src = birdMiniImages[index];
@@ -376,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (laptopBigPopup) laptopBigPopup.style.backgroundColor = bird.popup_color;
     if (laptopBigBg) laptopBigBg.src = bird.laptop_bg;
 
-    // 4 ЭКРАН (ИГРА)
     if (gamePopupBird) gamePopupBird.src = birdMiniImages[index];
     if (gamePopupText) gamePopupText.textContent = gameTexts[index];
 
@@ -411,7 +373,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ];
 
-    // ЦВЕТА ЭЛЛИПСОВ
     document.querySelectorAll(".elips_1, .elips_2, .elips_3").forEach((el) => {
       if (el.classList.contains("elips_1"))
         el.style.backgroundColor = bird.elips1_color;
@@ -421,12 +382,10 @@ document.addEventListener("DOMContentLoaded", function () {
         el.style.backgroundColor = bird.elips3_color;
     });
 
-    // РЫЧАЖКИ
     document.querySelectorAll(".lever_button").forEach((el) => {
       el.src = bird.lever;
     });
 
-    // СВЕТЯЩИЕСЯ КНОПКИ
     const glowButtons = document.querySelectorAll(".glow_button");
     if (glowButtons.length >= 6) {
       glowButtons[0].src = bird.light_btn1;
@@ -437,12 +396,10 @@ document.addEventListener("DOMContentLoaded", function () {
       glowButtons[5].src = bird.light_btn1;
     }
 
-    // ПРОСТЫЕ КНОПКИ
     document.querySelectorAll(".simple_button").forEach((el) => {
       el.src = bird.simple_btn;
     });
 
-    // ПОЛЗУНКИ
     document.querySelectorAll(".slider_stroke").forEach((el) => {
       el.src = bird.slider_stroke;
     });
@@ -450,7 +407,6 @@ document.addEventListener("DOMContentLoaded", function () {
       el.src = bird.slider_thumb;
     });
 
-    // ЗВЕЗДЫ ДЛЯ 4 ЭКРАНА
     const starBig4 = document.querySelector("#StarBig");
     const starMidle4 = document.querySelector("#StarMidle");
     const starMini4 = document.querySelector("#StarMini");
@@ -459,7 +415,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (starMidle4) starMidle4.src = bird.star_midle;
     if (starMini4) starMini4.src = bird.star_mini;
 
-    // 5 ЭКРАН - ПРОИГРЫВАТЕЛЬ
     const soundNeedleImg = document.querySelector(".sound_needle");
     const recordPlayerImg = document.querySelector(".record_player");
     const recordDiskImg = document.querySelector(".record_disk");
@@ -480,7 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
       disk.src = bird.vinyl_disk;
     });
 
-    // ЗВЕЗДЫ В ПОДВАЛЕ
     const starBsmntMini = document.querySelector(".star_bsmnt_mini");
     const starBsmntMidle = document.querySelector(".star_bsmnt_midle");
     const starBsmntBig = document.querySelector(".star_bsmnt_big");
@@ -514,7 +468,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(`Смена на птицу ${index + 1}`);
   }
 
-  // АНИМАЦИЯ СМЕНЫ ПТИЦЫ
   function changeBird(index) {
     birdImage.style.transition = "opacity 0.2s ease";
     birdImage.style.opacity = "0";
@@ -524,7 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 150);
   }
 
-  // НАГРАДА
   const rewardVinyl = document.getElementById("rewardVinyl");
   const collectRewardBtn = document.createElement("button");
   collectRewardBtn.className = "collect_reward";
@@ -546,7 +498,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   collectRewardBtn.addEventListener("click", resetReward);
 
-  // DRAG & DROP
   const draggableElements = document.querySelectorAll(
     ".note_1, .note_2, .headphones, .guitar, .sticks, .microphone, .vinyl",
   );
@@ -625,7 +576,6 @@ document.addEventListener("DOMContentLoaded", function () {
     activeElement = null;
   }
 
-  // РЫЧАЖКИ С ЗВУКОМ
   const leverSound = new Audio("./sounds/lever_click.mp3");
   leverSound.preload = "auto";
 
@@ -664,14 +614,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // КЛАВИШИ ПИАНИНО
   document.querySelectorAll(".piano_upper_key, .piano_key").forEach((key) => {
     key.addEventListener("click", () => {
       console.log("Нажата клавиша:", key.dataset.key || "обычная");
     });
   });
 
-  //  ОБРАБОТЧИКИ КНОПОК
   leftArrow.onclick = (e) => {
     e.preventDefault();
     if (!isConfirmed) {
@@ -702,7 +650,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // ОТКРЫТИЕ ПУЛЬТА
   if (soundpad) {
     soundpad.style.cursor = "pointer";
     soundpad.addEventListener("click", function () {
@@ -733,7 +680,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  //  СКРОЛЛ
+
   window.addEventListener("scroll", () => {
     const block2 = document.getElementById("block2");
     const block3 = document.getElementById("block3");
@@ -765,8 +712,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-
-  // ЗАКРЫТИЕ ПОПАПОВ
 
   if (closeRules) {
     closeRules.addEventListener("click", (e) => {
@@ -812,7 +757,7 @@ document.addEventListener("DOMContentLoaded", function () {
       laptopPopup?.classList.remove("show");
     });
   }
-  // ОТКРЫТИЕ БОЛЬШОГО ПОПАПА НОУТБУКА
+
   if (laptop) {
     laptop.style.cursor = "pointer";
     laptop.addEventListener("click", function () {
@@ -844,10 +789,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let i = 0;
             let isLinkInserted = false;
 
-            // Функция печати текста с HTML
             function typeWriter() {
               if (!isLinkInserted && i >= textBeforeLink.length) {
-                // Вставляем ссылку целиком
                 typingText.innerHTML += `<a href="${linkUrl}" target="_blank" class="typing_link" style="color: #5d03cb; text-decoration: underline; cursor: pointer;">${linkText}</a>`;
                 isLinkInserted = true;
                 i = 0;
@@ -904,12 +847,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  //  ИНИЦИАЛИЗАЦИЯ
-  // toggleScroll(true); временно закоменчен блок для скролла!
+
+  toggleScroll(true);
   changeAllElements(0);
   birdImage.style.opacity = "1";
 
-  //ПОЛЗУНКИ
   function initSliders() {
     const sliders = document.querySelectorAll(".slider_thumb");
 
@@ -990,13 +932,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  //ИГРА НА 4 ЭКРАНЕ
-  // элементы
   const targetCounter = document.getElementById("targetCounter");
   const gameField = document.getElementById("gameField");
   const targetImage = document.getElementById("targetImage");
 
-  // переменные игры
   let targetCount = 0;
   let isGameActive = true;
   let fallingItems = [];
@@ -1041,7 +980,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // создание падающего элемента
   function createFallingItem() {
     if (!isGameActive) return;
     if (!gameField) return;
@@ -1058,7 +996,6 @@ document.addEventListener("DOMContentLoaded", function () {
     item.dataset.type = randomType.type;
     item.dataset.points = randomType.points;
 
-    //  размеры поля
     const fieldRect = gameField.getBoundingClientRect();
     const itemWidth = parseFloat(randomType.width);
     const itemHeight = parseFloat(randomType.height);
@@ -1166,7 +1103,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // функция обновления игры при смене птицы
   function updateGameForNewBird() {
     if (window.gameStarted && isGameActive) {
       startGame();
@@ -1202,8 +1138,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-
-  // ПОДКЛЮЧЕНИЕ ЗВУКОВ К КЛАВИШАМ
 
   const notes = [
     { note: "C", file: "./sounds/note_c.mp3" },
@@ -1272,8 +1206,6 @@ document.addEventListener("DOMContentLoaded", function () {
       playNote(15);
     });
   }
-
-  // СОЗДАНИЕ ПОЛОСОК И ЗВУКА
 
   const waveBarsContainer = document.getElementById("waveBarsContainer");
   const playBtn = document.getElementById("playTrackBtn");
@@ -1406,7 +1338,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  // 5 ЭКРАН ПРОИГРЫВАТЕЛЬ
 
   const vinylDisks = document.querySelectorAll(
     ".vinyl_disk1, .vinyl_disk2, .vinyl_disk3",
@@ -1425,10 +1356,9 @@ document.addEventListener("DOMContentLoaded", function () {
     vinyl_disk3: "./sounds/track_4.mp3",
   };
 
-  // СОЗДАЕМ КНОПКУ БЕЗ ИНЛАЙН-СТИЛЕЙ
   const returnBtn = document.createElement("button");
   returnBtn.textContent = "Вернуть пластинку";
-  returnBtn.className = "return_disk_btn"; // только класс!
+  returnBtn.className = "return_disk_btn";
   document.body.appendChild(returnBtn);
   function stopPlayerTrack() {
     if (playerAudio) {
